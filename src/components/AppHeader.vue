@@ -1,40 +1,38 @@
 <!-- script section -->
 <script>
+import { RouterLink } from 'vue-router';
+
 export default {
-  // name
-  name: "AppHeader",
+    // name
+    name: "AppHeader",
+    // data
+    data() {
+        return {
+            links: [
+                // home
+                {
+                    label: "HOME",
+                    routeName: "home"
+                },
 
-  // data
-  data() {
-    return {
-      links: [
+                // {
+                //     label: "ABOUT",
+                //     routeName: "about"
+                // },
 
-        // home
-        {
-          voice: "HOME",
-          href: "#home"
-        },
+                // {
+                //     label: "SERVICES",
+                //     routeName: "services"
+                // },
 
-        // about
-        {
-          voice: "ABOUT",
-          href: "#about"
-        },
-
-        // services
-        {
-          voice: "SERVICES",
-          href: "#services"
-        },
-
-        // contact
-        {
-          voice: "CONTACT",
-          href: "#contact"
-        }
-      ]
-    }
-  }
+                // {
+                //     label: "CONTACT",
+                //     routeName: "contact"
+                // }
+            ]
+        };
+    },
+    components: { RouterLink }
 }
 
 </script>
@@ -51,7 +49,7 @@ export default {
       <nav>
         <ul>
           <li v-for="( item, index ) in links">
-            <a :href="item.href">{{ item.voice }}</a>
+            <router-link :to="{ name: item.routeName }">{{ item.label }}</router-link>
           </li>
         </ul>
       </nav>
