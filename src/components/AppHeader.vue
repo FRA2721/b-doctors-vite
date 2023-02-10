@@ -1,12 +1,12 @@
 <!-- script section -->
 <script>
-export default{
+export default {
   // name
   name: "AppHeader",
 
   // data
-  data(){
-    return{
+  data() {
+    return {
       links: [
 
         // home
@@ -47,6 +47,7 @@ export default{
 
   <!-- header section -->
   <header>
+    <h1 class="text-danger">CIAOO</h1>
     <nav>
       <ul>
         <li v-for="( item, index ) in links">
@@ -63,40 +64,39 @@ export default{
 
 
 <!-- style section -->
-<style lang="scss" scoped>
+<style lang="scss">
 @use './styles/general.scss' as *;
 
-header{
+header {
   background-image: linear-gradient(to bottom right, lightblue, rgb(216, 236, 243));
 
-    nav{
+  nav {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
     width: 80%;
 
     // list formatting section
-    ul{
+    ul {
       display: flex;
 
       // list items
-      li{
+      li {
         padding: 1rem;
         border-top: 3px solid transparent;
         transition-duration: .5s;
 
-        &:hover{
+        &:hover {
           opacity: 1;
           border-top: 3px solid white;
         }
 
         // anchor
-        a{
+        a {
           color: white;
         }
       }
     }
   }
 }
-
 </style>
