@@ -1,7 +1,7 @@
 <!-- script section -->
 <script>
 import { RouterLink } from 'vue-router';
-import AppAboutUs from './AppAboutUs.vue';
+import AppAboutUs from '../pages/AppAboutUs.vue';
 
 export default {
     // name
@@ -10,30 +10,30 @@ export default {
     data() {
         return {
             links: [
-                // home
+                
                 {
                     label: "HOME",
                     routeName: "home"
                 },
 
                 {
-                    label: "ABOUT",
+                    label: "ABOUT US",
                     routeName: "about-us"
                 },
 
-                // {
-                //     label: "SERVICES",
-                //     routeName: "services"
-                // },
+                {
+                    label: "SERVICES",
+                    routeName: "services"
+                },
 
-                // {
-                //     label: "CONTACT",
-                //     routeName: "contact"
-                // }
+                {
+                    label: "CONTACT",
+                    routeName: "contact"
+                 }
             ]
         };
     },
-    components: { RouterLink, AppAboutUs }
+    components: { RouterLink }
 }
 
 </script>
@@ -53,6 +53,7 @@ export default {
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <div class="nav-link" v-for="( item, index ) in links">
@@ -60,6 +61,7 @@ export default {
                         </div>
                     </div>
                 </div>
+                <!-- log in & register -->
             </div>
         </nav>
     </div>

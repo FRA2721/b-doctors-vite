@@ -13,11 +13,9 @@ export default {
 <!-- template section -->
 <template>
 
-  <h2>about us</h2>
+  <h2>contact</h2>
 
 </template>
-
-
 
 
 
