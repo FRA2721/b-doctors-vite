@@ -47,13 +47,15 @@ export default {
 
   <!-- header section -->
   <header>
-    <nav>
-      <ul>
-        <li v-for="( item, index ) in links">
-          <a :href="item.href">{{ item.voice }}</a>
-        </li>
-      </ul>
-    </nav>
+    <div class="container">
+      <nav>
+        <ul>
+          <li v-for="( item, index ) in links">
+            <a :href="item.href">{{ item.voice }}</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
   <!-- /header section -->
 
@@ -72,8 +74,6 @@ header {
   nav {
     display: flex;
     justify-content: space-between;
-    margin: 0 auto;
-    width: 80%;
     padding: 1rem 0;
 
     // list formatting section
@@ -83,6 +83,7 @@ header {
       // list items
       li {
         margin-right: 1rem;
+        padding-top: 1rem;
         border-top: 3px solid transparent;
         transition-duration: .5s;
 

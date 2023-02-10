@@ -4,20 +4,19 @@ import AppNotFound from './pages/AppNotFound.vue'
 
 const router = createRouter({
 
-    history: createWebHistory(), 
+    history: createWebHistory(),
     routes: [
         {
-            path : '/',
-            name: 'home', 
-            component: AppHome,     
-        }, 
+            path: '/',
+            name: 'home',
+            component: AppHome,
+        },
         {
             path: "/:pathMatch(.*)*",
             name: "not-found",
-            component: AppNotFound, 
+            component: AppNotFound,
         }
     ]
-
 });
 
-export {router}; 
+export { router }; 
