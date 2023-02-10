@@ -47,7 +47,6 @@ export default {
 
   <!-- header section -->
   <header>
-    <h1 class="text-danger">CIAOO</h1>
     <nav>
       <ul>
         <li v-for="( item, index ) in links">
@@ -65,7 +64,7 @@ export default {
 
 <!-- style section -->
 <style lang="scss">
-@use './styles/general.scss' as *;
+@use '../styles/general.scss' as *;
 
 header {
   background-image: linear-gradient(to bottom right, lightblue, rgb(216, 236, 243));
@@ -75,6 +74,7 @@ header {
     justify-content: space-between;
     margin: 0 auto;
     width: 80%;
+    padding: 1rem 0;
 
     // list formatting section
     ul {
@@ -82,7 +82,7 @@ header {
 
       // list items
       li {
-        padding: 1rem;
+        margin-right: 1rem;
         border-top: 3px solid transparent;
         transition-duration: .5s;
 
