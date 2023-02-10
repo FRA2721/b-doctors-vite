@@ -49,18 +49,29 @@ export default {
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <!-- add image logo -->
+
+                <!-- logo -->
+                <a href="/">
+                    <img src="../assets/imgs/doctor-logo_10250-530.png" alt="logo">
+                </a>
+                <!-- /logo -->
+
+                <!-- hambunger menu -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
+                <!-- /hamburger menu -->
 
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <!-- navbar link -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <div class="nav-link" v-for="( item, index ) in links">
+                        <div class="nav-link justify-content-end" v-for="( item, index ) in links">
                             <router-link :to="{ name: item.routeName }">{{ item.label }}</router-link>
                         </div>
                     </div>
                 </div>
+                <!-- /navbar links -->
+
                 <!-- log in & register -->
             </div>
         </nav>
@@ -77,4 +88,7 @@ export default {
 <!-- style section -->
 <style lang="scss">
 @use '../styles/general.scss' as *;
+img{
+    width: 100px;
+}
 </style>
