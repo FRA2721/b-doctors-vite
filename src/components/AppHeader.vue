@@ -1,6 +1,7 @@
 <!-- script section -->
 <script>
 import { RouterLink } from 'vue-router';
+import AppAboutUs from './AppAboutUs.vue';
 
 export default {
     // name
@@ -15,10 +16,10 @@ export default {
                     routeName: "home"
                 },
 
-                // {
-                //     label: "ABOUT",
-                //     routeName: "about"
-                // },
+                {
+                    label: "ABOUT",
+                    routeName: "about-us"
+                },
 
                 // {
                 //     label: "SERVICES",
@@ -32,7 +33,7 @@ export default {
             ]
         };
     },
-    components: { RouterLink }
+    components: { RouterLink, AppAboutUs }
 }
 
 </script>
@@ -46,18 +47,27 @@ export default {
   <!-- header section -->
   <header>
     <div class="container">
-      <nav>
-        <ul>
-          <li v-for="( item, index ) in links">
-            <router-link :to="{ name: item.routeName }">{{ item.label }}</router-link>
-          </li>
-        </ul>
-      </nav>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <!-- add image logo -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <div class="nav-link" v-for="( item, index ) in links">
+                            <router-link :to="{ name: item.routeName }">{{ item.label }}</router-link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </div>
-  </header>
-  <!-- /header section -->
+</header>
+<!-- /header section -->
 
 </template>
+
 
 
 
@@ -65,37 +75,4 @@ export default {
 <!-- style section -->
 <style lang="scss">
 @use '../styles/general.scss' as *;
-
-header {
-  background-image: linear-gradient(to bottom right, lightblue, rgb(216, 236, 243));
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0;
-
-    // list formatting section
-    ul {
-      display: flex;
-
-      // list items
-      li {
-        margin-right: 1rem;
-        padding-top: 1rem;
-        border-top: 3px solid transparent;
-        transition-duration: .5s;
-
-        &:hover {
-          opacity: 1;
-          border-top: 3px solid white;
-        }
-
-        // anchor
-        a {
-          color: white;
-        }
-      }
-    }
-  }
-}
 </style>

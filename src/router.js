@@ -11,11 +11,18 @@ const router = createRouter({
             name: 'home',
             component: AppHome,
         },
+
+        {
+            path: "/about-us",
+            name: "about-us",
+            component: AppAboutUs,
+        },
+
         {
             path: "/:pathMatch(.*)*",
             name: "not-found",
             component: AppNotFound,
-        }
+        },
     ]
 });
 
