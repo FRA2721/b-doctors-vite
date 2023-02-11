@@ -51,7 +51,7 @@ export default {
             <div class="container-fluid">
 
                 <!-- logo -->
-                <a href="/">
+                <a href="/"> 
                     <img src="../assets/imgs/doctor-logo_10250-530.png" alt="logo">
                 </a>
                 <!-- /logo -->
@@ -63,11 +63,11 @@ export default {
                 <!-- /hamburger menu -->
 
                 <!-- navbar link -->
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="collapse navbar-collapse justify-content-end links" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <div class="nav-link justify-content-end" v-for="( item, index ) in links">
+                        <a class="nav-link justify-content-end" v-for="( item, index ) in links">
                             <router-link :to="{ name: item.routeName }">{{ item.label }}</router-link>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <!-- /navbar links -->
@@ -88,7 +88,16 @@ export default {
 <!-- style section -->
 <style lang="scss">
 @use '../styles/general.scss' as *;
+
+// img general formatting section
 img{
     width: 100px;
+}
+
+// links general formatting section
+.links{
+    a{
+        color: red;
+    }
 }
 </style>
