@@ -1,7 +1,7 @@
 <!-- script section -->
 <script>
 import { RouterLink } from 'vue-router';
-import AppAboutUs from '../pages/AppAboutUs.vue';
+import AppJumbotron from './AppJumbotron.vue';
 
 export default {
     // name
@@ -33,7 +33,7 @@ export default {
             ]
         };
     },
-    components: { RouterLink }
+    components: { RouterLink, AppJumbotron }
 }
 
 </script>
@@ -52,8 +52,9 @@ export default {
 
                 <!-- logo -->
                 <a href="/"> 
-                    <img src="../assets/imgs/doctor-logo_10250-530.png" alt="logo">
+                    <img src="../assets/imgs/stethoscope.png" alt="logo">
                 </a>
+                <span>B Doctors</span>
                 <!-- /logo -->
 
                 <!-- hambunger menu -->
@@ -63,18 +64,23 @@ export default {
                 <!-- /hamburger menu -->
 
                 <!-- navbar link -->
-                <div class="collapse navbar-collapse justify-content-end links" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav links">
                         <a class="nav-link justify-content-end" v-for="( item, index ) in links">
                             <router-link :to="{ name: item.routeName }">{{ item.label }}</router-link>
                         </a>
                     </div>
                 </div>
                 <!-- /navbar links -->
-
                 <!-- log in & register -->
             </div>
         </nav>
+
+        <!-- jumbotron section -->
+        <div>
+            <AppJumbotron />
+        </div>
+        
     </div>
 </header>
 <!-- /header section -->
@@ -89,15 +95,49 @@ export default {
 <style lang="scss">
 @use '../styles/general.scss' as *;
 
+header{
+    background-color: rgb(195, 222, 231);
+}
+
 // img general formatting section
 img{
-    width: 100px;
+    width: 50px;
 }
 
 // links general formatting section
 .links{
+
     a{
-        color: red;
+        color: white;
+
+        &:after {
+        display:block;
+        content: '';
+        border-bottom: solid 3px white;  
+        transform: scaleX(0);  
+        transition: transform 250ms ease-in-out;
+        }
+
+        &:hover:after { 
+            transform: scaleX(1); 
+        }
+
+        &.fromRight:after{ 
+            transform-origin: 100% 50%; 
+        }
+        
+        &.fromLeft:after{  
+            transform-origin: 0% 50%; 
+        }
+
+        &:hover{
+            transition-duration: .5s;
+            color: rgb(65, 200, 215);
+        }
+
+        &:active{
+            color: lightgrey;
+        }
     }
 }
 </style>

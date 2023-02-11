@@ -1,21 +1,17 @@
+<!-- script section -->
 <script>
 
 export default {
+    // name
     name: 'AppHome'
 }
-
-
 </script>
+<!-- /script section -->
 
+<!-- template section -->
 <template>
     <!-- jumbotron here -->
     <main>
-        <div class="bg-primary">
-            <div class="container jumbotron">
-
-                jumbotron
-            </div>
-        </div>
 
         <div class="bg-success">
             <div class="container evidenza">
@@ -30,7 +26,11 @@ export default {
         </div>
     </main>
 </template>
+<!-- /template section -->
 
+
+
+<!-- style section -->
 <style lang="scss">
 .jumbotron {
     min-height: 500px;
@@ -40,3 +40,4 @@ export default {
     min-height: 200px;
 }
 </style>
+<!-- /style section -->
