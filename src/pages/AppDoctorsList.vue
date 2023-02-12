@@ -48,7 +48,11 @@ export default {
 
 
         <div v-for="doctor in this.doctors">
-            <div v-if="doctor.specializations[0].title.toLowerCase() == (this.store.searchKey).toLowerCase()">
+            <!-- <div v-if="doctor.specializations[0].title.toLowerCase() == (this.store.searchKey).toLowerCase()"> -->
+            <div
+                v-if="doctor.specializations.some(spec => spec.title.toLowerCase() === this.store.searchKey.toLowerCase())">
+
+
                 <p>{{ doctor.name }}</p>
                 <p>{{ doctor.surname }}</p>
                 <p>Specializations:</p>
