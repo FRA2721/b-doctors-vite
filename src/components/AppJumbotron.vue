@@ -1,17 +1,17 @@
 <!-- script section -->
 <script>
-    export default{
-        // name
-        name: "AppJumbotron"
-    }
+export default {
+    // name
+    name: "AppJumbotron"
+}
 </script>
 
 
 
 
-<!-- template section -->
+
 <template>
-    <section class="d-flex">
+    <!-- <section class="d-flex jumbotron-section">
         <div class="jumbotron">
             <div class="jumbotron-container">
                 <h3>We care about you...</h3>
@@ -24,7 +24,44 @@
         <div class="">
             <img src="../assets/imgs/jumbo-doctors.png" alt="">
         </div>
+    </section> -->
+
+    <section class="jumbotron">
+        <div class="jumbotron-container">
+            <div class="container">
+                <div class="row">
+                    <div
+                        class="jumbo-left pt-4 pb-4 col-12 col-lg-8 text-white text-center text-lg-start d-flex flex-column justify-content-center">
+                        <h3>We care about you...</h3>
+                        <h1 class="mb-3">THE BEST<br>ONLINE<br>SUPPORT FOR YOUR HEALTH</h1>
+
+                        <div class="call-to-action row g-2">
+                            <div class=" col-12 col-md-6 col-lg-3 col-xl-12">
+                                <a href="#" class="btn btn-primary">READ MORE</a>
+                            </div>
+                            <div
+                                class="col-12 col-md-6 col-lg-9 col-xl-12 d-flex justify-content-center justify-content-lg-start align-items-center">
+                                <div class="d-inline-block">
+                                    <a href="#" class="play-btn me-2"><i class="fa-regular fa-circle-play me-1"></i>
+                                    </a>
+                                </div>
+                                <div class="d-inline-block">Meet our
+                                    doctors</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="jumbo-right d-none d-lg-block col-4">
+                        <div class="jumbo-img">
+                            <img src="../assets/imgs/jumbo-doctor.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+
+
 </template>
 
 
@@ -33,57 +70,28 @@
 <!-- style section -->
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
-.jumbotron{
-    padding: 10rem 0;
-    
-    // h3, h1 tipography
-    h3, h1{
-        color: white
+
+.jumbotron {
+    background-color: #c3dee7;
+
+    h3 {
+        font-size: 1.4rem;
     }
-    
-    // jumbotron container formatting section
-    .jumbotron-container{
-        width: 90%;
-        margin: 0 auto;
 
-        // h1 tipography
-        h1{
-            font-size: 2.5rem;
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .jumbo-img {
+        img {
+            width: 100%;
         }
+    }
 
-        // h3 tipography
-        h3{
-            font-size: .8rem;
-        }
-
-        // paly botton formatting section
-        .play-btn{
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            border: 1.5px solid white;
-            border-radius: 50px;
-            text-align: center;
-            line-height: 30px;
-            margin-left: 50px;
-            
-            // icon formatting section
-            i{
-                color: rgb(42, 42, 250);
-            }
-        }
-
-        .read-more-btn{
-            color: white;
-            background-color: rgb(69, 168, 202);
+    .play-btn {
+        i {
+            font-size: 1.7rem;
         }
     }
 }
-
-
-img{
-    width: 750px;
-    transform: translateY(+80px);
-}
-
 </style>

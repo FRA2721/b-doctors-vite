@@ -10,7 +10,7 @@ export default {
     data() {
         return {
             links: [
-                
+
                 {
                     label: "HOME",
                     routeName: "home"
@@ -29,7 +29,7 @@ export default {
                 {
                     label: "CONTACT",
                     routeName: "contact"
-                 }
+                }
             ]
         };
     },
@@ -44,46 +44,43 @@ export default {
 <!-- template section -->
 <template>
 
-  <!-- header section -->
-  <header>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
+    <!-- header section -->
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
 
-                <!-- logo -->
-                <a href="/"> 
-                    <img src="../assets/imgs/stethoscope.png" alt="logo">
-                </a>
-                <span>B Doctors</span>
-                <!-- /logo -->
+                    <!-- logo -->
+                    <a href="/">
+                        <img src="../assets/imgs/stethoscope.png" alt="logo">
+                    </a>
+                    <span>B Doctors</span>
+                    <!-- /logo -->
 
-                <!-- hambunger menu -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <!-- /hamburger menu -->
+                    <!-- hambunger menu -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- /hamburger menu -->
 
-                <!-- navbar link -->
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                    <div class="navbar-nav links">
-                        <a class="nav-link justify-content-end" v-for="( item, index ) in links">
-                            <router-link :to="{ name: item.routeName }">{{ item.label }}</router-link>
-                        </a>
+                    <!-- navbar link -->
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                        <div class="navbar-nav links">
+                            <a class="nav-link justify-content-end" v-for="( item, index ) in links">
+                                <router-link :to="{ name: item.routeName }">{{ item.label }}</router-link>
+                            </a>
+                        </div>
                     </div>
+                    <!-- /navbar links -->
+                    <!-- log in & register -->
                 </div>
-                <!-- /navbar links -->
-                <!-- log in & register -->
-            </div>
-        </nav>
+            </nav>
 
-        <!-- jumbotron section -->
-        <div>
-            <AppJumbotron />
         </div>
-        
-    </div>
-</header>
-<!-- /header section -->
+    </header>
+    <!-- /header section -->
 
 </template>
 
@@ -95,47 +92,47 @@ export default {
 <style lang="scss">
 @use '../styles/general.scss' as *;
 
-header{
+header {
     background-color: rgb(195, 222, 231);
 }
 
 // img general formatting section
-img{
+img {
     width: 50px;
 }
 
 // links general formatting section
-.links{
+.links {
 
-    a{
+    a {
         color: white;
 
         &:after {
-        display:block;
-        content: '';
-        border-bottom: solid 3px white;  
-        transform: scaleX(0);  
-        transition: transform 250ms ease-in-out;
+            display: block;
+            content: '';
+            border-bottom: solid 3px white;
+            transform: scaleX(0);
+            transition: transform 250ms ease-in-out;
         }
 
-        &:hover:after { 
-            transform: scaleX(1); 
+        &:hover:after {
+            transform: scaleX(1);
         }
 
-        &.fromRight:after{ 
-            transform-origin: 100% 50%; 
-        }
-        
-        &.fromLeft:after{  
-            transform-origin: 0% 50%; 
+        &.fromRight:after {
+            transform-origin: 100% 50%;
         }
 
-        &:hover{
+        &.fromLeft:after {
+            transform-origin: 0% 50%;
+        }
+
+        &:hover {
             transition-duration: .5s;
             color: rgb(65, 200, 215);
         }
 
-        &:active{
+        &:active {
             color: lightgrey;
         }
     }

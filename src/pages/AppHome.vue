@@ -1,16 +1,23 @@
 <!-- script section -->
 <script>
 
+import AppJumbotron from '../components/AppJumbotron.vue';
+
 export default {
-    // name
-    name: 'AppHome'
+
+    name: 'AppHome',
+    components: { AppJumbotron }
+
 }
 </script>
 <!-- /script section -->
 
 <!-- template section -->
 <template>
-    <!-- jumbotron here -->
+    <!-- jumbotron section -->
+    <div>
+        <AppJumbotron />
+    </div>
     <main>
 
         <div class="bg-success">
@@ -32,9 +39,9 @@ export default {
 
 <!-- style section -->
 <style lang="scss">
-.jumbotron {
-    min-height: 500px;
-}
+// .jumbotron {
+//     min-height: 500px;
+// }
 
 .evidenza {
     min-height: 200px;
