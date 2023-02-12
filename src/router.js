@@ -4,6 +4,7 @@ import AppAboutUs from './pages/AppAboutUs.vue';
 import AppServices from './pages/AppServices.vue';
 import AppContact from './pages/AppContact.vue';
 import AppNotFound from './pages/AppNotFound.vue';
+import AppDoctorsList from './pages/AppDoctorsList.vue';
 
 const router = createRouter({
 
@@ -42,6 +43,14 @@ const router = createRouter({
             component: AppContact,
             meta: {
                 title: 'Our Contacts',
+            }
+        },
+        {
+            path: "/doctorslist",
+            name: "doctorslist",
+            component: AppDoctorsList,
+            meta: {
+                title: 'Doctors',
             }
         },
 

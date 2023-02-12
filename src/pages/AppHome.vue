@@ -1,12 +1,22 @@
 <!-- script section -->
 <script>
-
+import { store } from '../store';
+import { RouterLink } from 'vue-router';
 import AppJumbotron from '../components/AppJumbotron.vue';
 
 export default {
 
     name: 'AppHome',
-    components: { AppJumbotron }
+    components: { AppJumbotron, RouterLink },
+    data() {
+        return {
+            store,
+            label: "Search",
+            routeName: "doctorslist"
+
+
+        }
+    },
 
 }
 </script>
@@ -25,12 +35,13 @@ export default {
                 medici in evidenza
             </div>
         </div>
-
-        <div class="container pt-2">
-
-            <input type="text" placeholder="sarch by specialization">
-            <p>lista dei dottori</p>
+        <div class="container pt-3">
+            <div class="searchbar">
+                <input type="text" placeholder="Find a Doctor" v-model="this.store.searchKey">
+                <router-link :to="{ name: this.routeName }">{{ this.label }}</router-link>
+            </div>
         </div>
+
     </main>
 </template>
 <!-- /template section -->
