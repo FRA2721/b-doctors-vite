@@ -47,7 +47,7 @@ export default {
           <a href="/">
             <img src="../assets/imgs/stethoscope.png" alt="logo" />
           </a>
-          <span>B Doctors</span>
+          <strong><span class="logo">B Doctors</span></strong>
           <!-- /logo -->
 
           <!-- hambunger menu -->
@@ -70,7 +70,8 @@ export default {
             <div class="navbar-nav links">
               <a
                 class="nav-link justify-content-end"
-                v-for="(item, index) in links">
+                v-for="(item, index) in links"
+                :key="index">
                 <router-link :to="{ name: item.routeName }">{{
                   item.label
                 }}</router-link>
@@ -93,6 +94,9 @@ export default {
 header {
   background-image: linear-gradient(to bottom right, #2b94f1, #21ce99);
 }
+.logo {
+  color: rgb(15, 15, 61);
+}
 
 // img general formatting section
 img {
@@ -112,7 +116,7 @@ img {
       transition: transform 250ms ease-in-out;
     }
 
-    &:hover:after {
+    a:hover:after {
       transform: scaleX(1);
     }
 
