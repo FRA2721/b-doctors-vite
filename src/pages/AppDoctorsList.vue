@@ -10,7 +10,9 @@ export default {
             baseUrl: 'http://127.0.0.1:8000',
             doctors: [],
             loading: true,
-            store
+            store, 
+            counter: 0, 
+            total: 0, 
         }
     },
     created() {
@@ -25,6 +27,21 @@ export default {
             searchingDoctor = this.store.searchKey.toLowerCase();
             console.log(searchingUser);
         },
+        calculateCounter(){
+           this.counter = this.counter + 1; 
+        }, 
+        resetCounter(){
+            this.counter = 0; 
+        }, 
+        calculateTotal(i){
+            this.total = this.total + i; 
+        }, 
+        resetTotal(){
+            this.total = 0; 
+        }, 
+        average(){
+            return this.total/this.counter; 
+        }
     },
 }
 
@@ -57,7 +74,7 @@ export default {
 
 
 
-        <div v-for="doctor in this.doctors">
+        <div v-for="(doctor, index) in this.doctors">
             <div
                 v-if="doctor.specializations.some(spec => spec.title.toLowerCase() === this.store.searchKey.toLowerCase())">
 
@@ -69,17 +86,23 @@ export default {
                     {{ specialization.title }}
                 </p>
 
-                <p> <strong>Voti:</strong> </p>
-                <p v-for="(feedback, i) in doctor.feedback" :key="i">
-                    {{ feedback.vote }}
-                </p>
 
                 <p> <strong>Number of Feedback:</strong> </p>
-                <p v-for="(feedback, i) in doctor.feedback" :key="i">
-                    {{ i + 1 }}
+                <p v-for="(feedback) in doctor.feedback" :key="feedback.id">
+                    {{ this.calculateCounter() }}
                 </p>
+                <p>{{ this.counter }}</p>
+
+                <p> <strong>Media Voti:</strong> </p>
+                <p v-for="(feedback) in doctor.feedback" :key="feedback.id">
+                    {{ this.calculateTotal(feedback.vote) }}
+                </p>
+                <p>{{ this.average() }}</p>
                 <hr>
+
             </div>
+              {{ this.resetCounter() }}
+              {{ this.resetTotal() }}
         </div>
     </div>
 
