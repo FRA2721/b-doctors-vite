@@ -70,12 +70,12 @@ export default {
                 </p>
 
                 <p> <strong>Voti:</strong> </p>
-                <p v-for="(feedback, i) in doctor.feedbacks" :key="i">
+                <p v-for="(feedback, i) in doctor.feedback" :key="i">
                     {{ feedback.vote }}
                 </p>
 
                 <p> <strong>Number of Feedback:</strong> </p>
-                <p v-for="(feedback, i) in doctor.feedbacks" :key="i">
+                <p v-for="(feedback, i) in doctor.feedback" :key="i">
                     {{ i + 1 }}
                 </p>
                 <hr>
