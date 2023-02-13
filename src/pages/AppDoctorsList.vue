@@ -24,7 +24,7 @@ export default {
         searchDoctor() {
             searchingDoctor = this.store.searchKey.toLowerCase();
             console.log(searchingUser);
-        }
+        },
     },
 }
 
@@ -39,8 +39,18 @@ export default {
 
     <div class="container">
 
-        <div class="searchbar">
-            <input type="text" placeholder="Find a Doctor" v-model="this.store.searchKey" @keyup="searchDoctor">
+        <div class="searchbar mt-3">
+            <input class="me-2" type="text" placeholder="Find a Doctor" v-model="this.store.searchKey"
+                @keyup="searchDoctor">
+            <label for="voto">Media voti</label>
+            <select class="ms-1" name="voto" id="voto" v-model="this.store.voto">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <input class="ms-2" type="number" placeholder="Number of feedback" v-model="this.store.feedbackNumber">
         </div>
 
         <h2 class="py-3">Doctors</h2>
@@ -48,16 +58,25 @@ export default {
 
 
         <div v-for="doctor in this.doctors">
-            <!-- <div v-if="doctor.specializations[0].title.toLowerCase() == (this.store.searchKey).toLowerCase()"> -->
             <div
                 v-if="doctor.specializations.some(spec => spec.title.toLowerCase() === this.store.searchKey.toLowerCase())">
 
 
                 <p>{{ doctor.name }}</p>
                 <p>{{ doctor.surname }}</p>
-                <p>Specializations:</p>
+                <p> <strong>Specializations:</strong> </p>
                 <p v-for="specialization in doctor.specializations">
                     {{ specialization.title }}
+                </p>
+
+                <p> <strong>Voti:</strong> </p>
+                <p v-for="(feedback, i) in doctor.feedbacks" :key="i">
+                    {{ feedback.vote }}
+                </p>
+
+                <p> <strong>Number of Feedback:</strong> </p>
+                <p v-for="(feedback, i) in doctor.feedbacks" :key="i">
+                    {{ i + 1 }}
                 </p>
                 <hr>
             </div>
