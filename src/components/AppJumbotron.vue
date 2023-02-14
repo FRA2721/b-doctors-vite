@@ -50,7 +50,7 @@ export default {
           </div>
           <div class="jumbo-right d-none d-lg-block col-4">
             <div class="jumbo-img">
-              <img src="../assets/imgs/jumbo-doctor.png" alt="" />
+              <img src="../assets/imgs/jumbo-doctor.png" alt="jumbotron doctors" />
             </div>
           </div>
         </div>
@@ -73,13 +73,11 @@ export default {
   h1 {
     font-size: 1.8rem;
   }
-
   .jumbo-img {
     img {
       width: 100%;
     }
   }
-
   .play-btn {
     i {
       font-size: 1.7rem;

@@ -130,7 +130,7 @@ img {
 
     &:hover {
       transition-duration: 0.5s;
-      color: rgb(65, 200, 215);
+      color: rgb(255, 255, 255);
     }
 
     &:active {
