@@ -62,16 +62,16 @@ export default {
             <div class="container mt-5 bg-light pt-5">
                 <div class=" evidenza">
                     <h2 class="text-center">Our Doctors</h2>
-                    <div class="row row-cols-1 row-cols-md-3 pt-5">
+                    <div class="row row-cols-1 row-cols-md-3 px-5 pt-5">
                         <div v-for="doctor in this.doctors" class="col mb-5">
                             <div class="card">
                                 <img src="../assets/imgs/doc-7.jpg" class="card-img-top" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">{{ doctor.name }} {{ doctor.surname }}</h5>
                                     <p class="card-text">
-                                    <h6 v-for="specialization in doctor.specializations">
-                                        {{ specialization.title }}
-                                    </h6>
+                                    <span class="fw-bold" v-for="specialization in doctor.specializations">
+                                        #{{ specialization.title }}
+                                    </span>
                                     </p>
                                     <p>{{ doctor.email }}</p>
                                 </div>
