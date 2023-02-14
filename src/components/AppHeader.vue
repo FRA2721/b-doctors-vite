@@ -34,13 +34,13 @@ export default {
       store,
     };
   },
-  components: { 
-    RouterLink, 
-    AppJumbotron 
-  }, 
+  components: {
+    RouterLink,
+    AppJumbotron
+  },
   methods: {
-    test () {
-     this.store.docSearch = ''  
+    cleanInput() {
+      this.store.docSearch = ''
     }
   }
 };
@@ -61,31 +61,19 @@ export default {
           <!-- /logo -->
 
           <!-- hambunger menu -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <!-- /hamburger menu -->
 
           <!-- navbar link -->
-          <div
-            class="collapse navbar-collapse justify-content-end"
-            id="navbarNavAltMarkup">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav links">
-              <a
-                class="nav-link justify-content-end"
-                v-for="(item, index) in links"
-                :key="index">
-                <router-link @click="test" :to="{ name: item.routeName }">{{
-                  item.label
-                }}</router-link>
-              </a>
+
+              <router-link @click="cleanInput" :to="{ name: item.routeName }" class="nav-link justify-content-end"
+                v-for="(item, index) in links" :key="index">{{ item.label }}</router-link>
+
             </div>
           </div>
           <!-- /navbar links -->
@@ -104,6 +92,7 @@ export default {
 header {
   background-image: linear-gradient(to bottom right, #2b94f1, #21ce99);
 }
+
 .logo {
   color: rgb(15, 15, 61);
 }
@@ -126,7 +115,7 @@ img {
       transition: transform 250ms ease-in-out;
     }
 
-    a:hover:after {
+    &:hover:after {
       transform: scaleX(1);
     }
 
