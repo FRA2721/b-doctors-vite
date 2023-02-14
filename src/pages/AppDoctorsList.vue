@@ -23,34 +23,16 @@ export default {
         getDoctors() {
             axios.get(`${this.baseUrl}/api/profiles`, {
                 params: {
-                    ...this.store.docSearch && { specialization_id: this.store.docSearch }
+                    ...this.store.docSearch && { specialization_id: this.store.docSearch },
+                    ...this.store.voto && { vote: this.store.voto }
                 }
             }).then(resp => {
                 this.doctors = resp.data.results.user;
-                this.specializations = resp.data.results.specializations;
+                this.store.specializations = resp.data.results.specializations;
                 console.log(this.doctors);
                 this.loading = false;
             })
         },
-        searchDoctor() {
-            searchingDoctor = this.store.searchKey.toLowerCase();
-            console.log(searchingUser);
-        },
-        calculateCounter() {
-            this.counter = this.counter + 1;
-        },
-        resetCounter() {
-            this.counter = 0;
-        },
-        calculateTotal(i) {
-            this.total = this.total + i;
-        },
-        resetTotal() {
-            this.total = 0;
-        },
-        average() {
-            return this.total / this.counter;
-        }
     },
 }
 
@@ -63,16 +45,16 @@ export default {
 
     <div class="container mt-2">
 
-        <div class="searchbar mt-3">
+        <div class="searchbar mt-3 col-4">
 
-            <select @change="getDoctors()" v-model="store.docSearch" placeholder="test">
+            <select class="form-select mb-2" @change="getDoctors()" v-model="store.docSearch" placeholder="test">
                 <option value="">choose a specialization</option>
                 <option v-for=" spec in store.specializations" :value="spec.id"> {{ spec.title }}</option>
             </select>
 
 
             <label for="voto">Media voti</label>
-            <select class="ms-1" name="voto" id="voto" v-model="this.store.voto">
+            <select class="ms-1" name="voto" id="voto" v-model="this.store.voto" @change="getDoctors()">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -82,22 +64,37 @@ export default {
             <input class="ms-2" type="number" placeholder="Number of feedback" v-model="this.store.feedbackNumber">
         </div>
 
-        <h2 class="py-3">Doctors</h2>
+        <h2 class="text-center my-5">Doctors</h2>
 
+        <div class="row justify-content-center">
 
+            <div class="border d-flex align-items-center p-2 rounded col-8" v-for="(doctor) in this.doctors" :key="doctor.id">
+                <div v-if="doctor.user_detail.photo" class="card_img">
+                    <img  :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
+                </div>
+                <div v-else class="card_img">
+                    <img  src="../assets/imgs/4025200.png" alt="">
+                </div>
+                <div class="card_body">
+                    <h2>
+                        <span class="me-1">{{ doctor.name }} </span>
+                        <span>{{ doctor.surname }}</span>
+                    </h2>
+                    <p>{{ doctor.email }}</p>
 
-        <div class="border p-2 rounded" v-for="(doctor) in this.doctors" :key="doctor.id">
-            <h2>
-                <span class="me-1">{{ doctor.name }} </span>
-                <span>{{ doctor.surname }}</span>
-            </h2>
-            <p>{{ doctor.email }}</p>
+                    <span class="me-2" v-for="spec in doctor.specializations">{{ spec.title }}</span>
 
-            <span class="me-2" v-for="spec in doctor.specializations">{{ spec.title }}</span>
+                    <p>{{ doctor.user_detail.phone }}</p>
 
-            <p>{{ doctor.user_detail.phone }}</p>
+                    <p>Average vote: {{ doctor.feedback_avg_vote / 1 }}</p>
 
-            <p>{{ doctor.user_detail.performance }}</p>
+                    <p>{{ doctor.user_detail.performance }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5" v-if="doctors.length <= 0">
+            <h2 class="text-center">No Doctors matched :( </h2>
         </div>
     </div>
 
@@ -106,5 +103,21 @@ export default {
 
 <!-- style section -->
 <style lang="scss">
+.card_img {
+    width: 35%;
+    height: 200px;
+    overflow-y: hidden;
+    padding: 1rem;
 
+    img {
+        object-fit: contain;
+        width: 100%;
+
+    }
+}
+
+.card_body {
+    width: 65%;
+    padding: 1rem;
+}
 </style>
