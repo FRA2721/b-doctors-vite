@@ -10,9 +10,10 @@ export default {
             baseUrl: 'http://127.0.0.1:8000',
             doctors: [],
             loading: true,
-            store, 
-            counter: 0, 
-            total: 0, 
+            store,
+            counter: 0,
+            total: 0,
+            test1: ''
         }
     },
     created() {
@@ -21,26 +22,40 @@ export default {
     },
     methods: {
         getDoctors() {
-            axios.get(`${this.baseUrl}/api/profiles`).then(resp => { this.doctors = resp.data.results; console.log(this.doctors); this.loading = false; })
+            axios.get(`${this.baseUrl}/api/profiles`).then(resp => { 
+                this.doctors = resp.data.results; 
+                console.log(this.doctors); 
+                this.loading = false; })
         },
         searchDoctor() {
             searchingDoctor = this.store.searchKey.toLowerCase();
             console.log(searchingUser);
         },
-        calculateCounter(){
-           this.counter = this.counter + 1; 
-        }, 
-        resetCounter(){
-            this.counter = 0; 
-        }, 
-        calculateTotal(i){
-            this.total = this.total + i; 
-        }, 
-        resetTotal(){
-            this.total = 0; 
-        }, 
-        average(){
-            return this.total/this.counter; 
+        calculateCounter() {
+            this.counter = this.counter + 1;
+        },
+        resetCounter() {
+            this.counter = 0;
+        },
+        calculateTotal(i) {
+            this.total = this.total + i;
+        },
+        resetTotal() {
+            this.total = 0;
+        },
+        average() {
+            return this.total / this.counter;
+        },
+
+        test() {
+
+            axios.get(`${this.baseUrl}/api/profiles`, {
+                params: {
+                    ...this.test1 && { test: this.test1 }
+                }
+            }).then((resp) => {
+                console.log(resp.data);
+            })
         }
     },
 }
@@ -54,7 +69,11 @@ export default {
 <template>
 
 
-    <div class="container">
+    <div class="container mt-2">
+        <form @submit.prevent="test()">
+            <input type="text" v-model="test1" placeholder="test">
+            <button type="submit" class="ms-2"> send</button>
+        </form>
 
         <div class="searchbar mt-3">
             <input class="me-2" type="text" placeholder="Find a Doctor" v-model="this.store.searchKey"
@@ -101,8 +120,8 @@ export default {
                 <hr>
 
             </div>
-              {{ this.resetCounter() }}
-              {{ this.resetTotal() }}
+            {{ this.resetCounter() }}
+            {{ this.resetTotal() }}
         </div>
     </div>
 
