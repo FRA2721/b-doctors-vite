@@ -13,7 +13,6 @@ export default {
             store,
             counter: 0,
             total: 0,
-            test1: '',
             specializations: []
         }
     },
@@ -24,7 +23,7 @@ export default {
         getDoctors() {
             axios.get(`${this.baseUrl}/api/profiles`, {
                 params: {
-                    ...this.test1 && { specialization_id: this.test1 }
+                    ...this.store.docSearch && { specialization_id: this.store.docSearch }
                 }
             }).then(resp => {
                 this.doctors = resp.data.results.user;
@@ -66,9 +65,9 @@ export default {
 
         <div class="searchbar mt-3">
 
-            <select @change="getDoctors()" v-model="test1" placeholder="test">
+            <select @change="getDoctors()" v-model="store.docSearch" placeholder="test">
                 <option value="">choose a specialization</option>
-                <option v-for=" spec in specializations" :value="spec.id"> {{ spec.title }}</option>
+                <option v-for=" spec in store.specializations" :value="spec.id"> {{ spec.title }}</option>
             </select>
 
 
@@ -94,7 +93,7 @@ export default {
             </h2>
             <p>{{ doctor.email }}</p>
 
-            <span class="ms-2" v-for="spec in doctor.specializations">{{ spec.title }}</span>
+            <span class="me-2" v-for="spec in doctor.specializations">{{ spec.title }}</span>
 
             <p>{{ doctor.user_detail.phone }}</p>
 
@@ -104,8 +103,6 @@ export default {
 
 
 </template>
-
-
 
 <!-- style section -->
 <style lang="scss">

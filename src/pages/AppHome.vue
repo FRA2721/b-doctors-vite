@@ -15,7 +15,6 @@ export default {
             routeName: "doctorslist",
             baseUrl: 'http://127.0.0.1:8000',
             doctors: [],
-            specializations: []
         };
     },
 
@@ -27,13 +26,16 @@ export default {
         getDoctors() {
             axios.get(`${this.baseUrl}/api/profiles`, {
                 params: {
-                    ...this.test1 && { specialization_id: this.test1 }
+                    ...this.store.docSearch && { specialization_id: this.store.docSearch }
                 }
             }).then(resp => {
                 this.doctors = resp.data.results.user;
-                this.specializations = resp.data.results.specializations;
+                this.store.specializations = resp.data.results.specializations;
                 console.log(this.doctors);
                 this.loading = false;
+                if(this.store.docSearch){
+                    this.$router.push({name: 'doctorslist'})
+                }
             })
         }
     },
@@ -51,14 +53,15 @@ export default {
         <div class="container pt-3">
 
             <div class="searchbar">
-                <input type="text" placeholder="Find a Doctor" v-model="this.store.searchKey" />
-                <router-link :to="{ name: this.routeName }">{{
-                    this.label
-                }}</router-link>
+                <select @change="getDoctors" v-model="store.docSearch" placeholder="test">
+                    <option value="">choose a specialization</option>
+                    <option v-for=" spec in store.specializations" :value="spec.id"> {{ spec.title }}</option>
+                </select>
             </div>
 
-            <div class="bg-light pt-5">
-                <div class="container evidenza">
+            <div class="container mt-5 bg-light pt-5">
+                <div class=" evidenza">
+                    <h2 class="text-center">Our Doctors</h2>
                     <div class="row row-cols-1 row-cols-md-3 pt-5">
                         <div v-for="doctor in this.doctors" class="col mb-5">
                             <div class="card">

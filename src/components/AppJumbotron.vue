@@ -24,7 +24,7 @@ export default {
 
   <section class="jumbotron">
     <div class="jumbotron-container">
-      <div class="container">
+      <div class="container px-5">
         <div class="row">
           <div
             class="jumbo-left pt-4 pb-4 col-12 col-lg-8 text-white text-center text-lg-start d-flex flex-column justify-content-center">
@@ -35,10 +35,10 @@ export default {
 
             <div class="call-to-action row g-2">
               <div class="col-12 col-md-6 col-lg-3 col-xl-12">
-                <a href="#" class="btn btn-primary">READ MORE</a>
+                <a href="#" class="btn mt-2 btn-primary">READ MORE</a>
               </div>
               <div
-                class="col-12 col-md-6 col-lg-9 col-xl-12 d-flex justify-content-center justify-content-lg-start align-items-center">
+                class="col-12 col-md-6 col-lg-9 col-xl-12 d-flex mt-4 justify-content-center justify-content-lg-start align-items-center">
                 <div class="d-inline-block">
                   <a href="#" class="play-btn me-2"
                     ><i class="fa-regular fa-circle-play me-1"></i>
@@ -76,6 +76,7 @@ export default {
   .jumbo-img {
     img {
       width: 100%;
+      padding-top: 8rem;
     }
   }
   .play-btn {

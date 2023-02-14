@@ -1,6 +1,7 @@
 <!-- script section -->
 <script>
 import { RouterLink } from "vue-router";
+import { store } from "../store";
 import AppJumbotron from "./AppJumbotron.vue";
 
 export default {
@@ -30,9 +31,18 @@ export default {
           routeName: "contact",
         },
       ],
+      store,
     };
   },
-  components: { RouterLink, AppJumbotron },
+  components: { 
+    RouterLink, 
+    AppJumbotron 
+  }, 
+  methods: {
+    test () {
+     this.store.docSearch = ''  
+    }
+  }
 };
 </script>
 
@@ -72,7 +82,7 @@ export default {
                 class="nav-link justify-content-end"
                 v-for="(item, index) in links"
                 :key="index">
-                <router-link :to="{ name: item.routeName }">{{
+                <router-link @click="test" :to="{ name: item.routeName }">{{
                   item.label
                 }}</router-link>
               </a>
