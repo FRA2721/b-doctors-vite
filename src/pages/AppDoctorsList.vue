@@ -13,19 +13,25 @@ export default {
             store,
             counter: 0,
             total: 0,
-            test1: ''
+            test1: '',
+            specializations: []
         }
     },
     created() {
         this.getDoctors();
-        console.log(this.store.searchKey);
     },
     methods: {
         getDoctors() {
-            axios.get(`${this.baseUrl}/api/profiles`).then(resp => { 
-                this.doctors = resp.data.results; 
-                console.log(this.doctors); 
-                this.loading = false; })
+            axios.get(`${this.baseUrl}/api/profiles`, {
+                params: {
+                    ...this.test1 && { specialization_id: this.test1 }
+                }
+            }).then(resp => {
+                this.doctors = resp.data.results.user;
+                this.specializations = resp.data.results.specializations;
+                console.log(this.doctors);
+                this.loading = false;
+            })
         },
         searchDoctor() {
             searchingDoctor = this.store.searchKey.toLowerCase();
@@ -45,17 +51,6 @@ export default {
         },
         average() {
             return this.total / this.counter;
-        },
-
-        test() {
-
-            axios.get(`${this.baseUrl}/api/profiles`, {
-                params: {
-                    ...this.test1 && { test: this.test1 }
-                }
-            }).then((resp) => {
-                console.log(resp.data);
-            })
         }
     },
 }
@@ -63,21 +58,20 @@ export default {
 </script>
 
 
-
-
 <!-- template section -->
 <template>
 
 
     <div class="container mt-2">
-        <form @submit.prevent="test()">
-            <input type="text" v-model="test1" placeholder="test">
-            <button type="submit" class="ms-2"> send</button>
-        </form>
 
         <div class="searchbar mt-3">
-            <input class="me-2" type="text" placeholder="Find a Doctor" v-model="this.store.searchKey"
-                @keyup="searchDoctor">
+
+            <select @change="getDoctors()" v-model="test1" placeholder="test">
+                <option value="">choose a specialization</option>
+                <option v-for=" spec in specializations" :value="spec.id"> {{ spec.title }}</option>
+            </select>
+
+
             <label for="voto">Media voti</label>
             <select class="ms-1" name="voto" id="voto" v-model="this.store.voto">
                 <option value="1">1</option>
@@ -93,35 +87,18 @@ export default {
 
 
 
-        <div v-for="(doctor, index) in this.doctors">
-            <div
-                v-if="doctor.specializations.some(spec => spec.title.toLowerCase() === this.store.searchKey.toLowerCase())">
+        <div class="border p-2 rounded" v-for="(doctor) in this.doctors" :key="doctor.id">
+            <h2>
+                <span class="me-1">{{ doctor.name }} </span>
+                <span>{{ doctor.surname }}</span>
+            </h2>
+            <p>{{ doctor.email }}</p>
 
+            <span class="ms-2" v-for="spec in doctor.specializations">{{ spec.title }}</span>
 
-                <p>{{ doctor.name }}</p>
-                <p>{{ doctor.surname }}</p>
-                <p> <strong>Specializations:</strong> </p>
-                <p v-for="specialization in doctor.specializations">
-                    {{ specialization.title }}
-                </p>
+            <p>{{ doctor.user_detail.phone }}</p>
 
-
-                <p> <strong>Number of Feedback:</strong> </p>
-                <p v-for="(feedback) in doctor.feedback" :key="feedback.id">
-                    {{ this.calculateCounter() }}
-                </p>
-                <p>{{ this.counter }}</p>
-
-                <p> <strong>Media Voti:</strong> </p>
-                <p v-for="(feedback) in doctor.feedback" :key="feedback.id">
-                    {{ this.calculateTotal(feedback.vote) }}
-                </p>
-                <p>{{ this.average() }}</p>
-                <hr>
-
-            </div>
-            {{ this.resetCounter() }}
-            {{ this.resetTotal() }}
+            <p>{{ doctor.user_detail.performance }}</p>
         </div>
     </div>
 
