@@ -52,8 +52,8 @@ export default {
     <main>
         <div class="container pt-3">
 
-            <div class="searchbar">
-                <select @change="getDoctors" v-model="store.docSearch" placeholder="test">
+            <div class="searchbar col-4 m-auto mt-3">
+                <select class="form-select" @change="getDoctors" v-model="store.docSearch" placeholder="test">
                     <option value="">choose a specialization</option>
                     <option v-for=" spec in store.specializations" :value="spec.id"> {{ spec.title }}</option>
                 </select>
@@ -62,7 +62,7 @@ export default {
             <div class="container mt-5 bg-light pt-5">
                 <div class=" evidenza">
                     <h2 class="text-center">Our Doctors</h2>
-                    <div class="row row-cols-1 row-cols-md-3 px-5 pt-5">
+                    <div class="row row-cols-1 row-cols-md-3 px-5 g-5 pt-5">
                         <div v-for="doctor in this.doctors" class="col mb-5">
                             <div class="card">
                                 <img src="../assets/imgs/doc-7.jpg" class="card-img-top" alt="..." />
