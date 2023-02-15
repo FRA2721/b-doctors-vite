@@ -102,8 +102,7 @@ export default {
 @use "../styles/general.scss" as *;
 
 header {
-  background-image: linear-gradient(to right, #d4e4fb, #d5f0e9);
-  // background-image: linear-gradient(to bottom right, #d4e4fb, #d5f0e9);
+  background-image: linear-gradient(to right, #d4e4fb, #d5eaf2);
 }
 
 .logo {
