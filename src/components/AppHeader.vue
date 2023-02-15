@@ -76,7 +76,7 @@ export default {
           <!-- navbar link -->
           <div
             class="collapse navbar-collapse justify-content-end"
-            id="navbarNavAltMarkup">
+            id="navbarNav">
             <div class="navbar-nav links text-secondary">
               <router-link
                 @click="cleanInput"
