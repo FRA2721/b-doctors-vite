@@ -48,68 +48,77 @@ export default {
 
     <div class="container mt-2">
 
-        <div class="searchbar mt-3 col-4">
+        <div class="searchbar mt-3 row align-items-center">
+            <div class="col-12 col-lg-6">
+                <select class="form-select mb-2" @change="getDoctors()" v-model="store.docSearch" placeholder="test">
+                    <option value="">choose a specialization</option>
+                    <option v-for=" spec in store.specializations" :value="spec.id"> {{ spec.title }}</option>
+                </select>
+            </div>
 
-            <select class="form-select mb-2" @change="getDoctors()" v-model="store.docSearch" placeholder="test">
-                <option value="">choose a specialization</option>
-                <option v-for=" spec in store.specializations" :value="spec.id"> {{ spec.title }}</option>
-            </select>
+            <div class="col-12 col-lg-3">
+                <label for="voto">Average vote</label>
 
+                <select class="ms-1" name="voto" id="voto" v-model="this.store.voto" @change="getDoctors()">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
 
-            <label for="voto">Media voti</label>
-            <select class="ms-1" name="voto" id="voto" v-model="this.store.voto" @change="getDoctors()">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+            <div class="col-12 col-lg-3">
 
-
-            <label for="number_of_feedback">Numero di Feedback</label>
-            <select class="ms-1" name="number_of_feedback" id="number_of_feedback" v-model="this.store.feedback_num"
-                @change="getDoctors()">
-                <option value="0">0</option>
-                <option value="5">>5</option>
-                <option value="10">>10</option>
-                <option value="15">>15</option>
-                <option value="20">>20</option>
-                <option value="25">>25</option>
-            </select>
-
+                <label for="number_of_feedback">Number of Feedback</label>
+                <select class="ms-1" name="number_of_feedback" id="number_of_feedback" v-model="this.store.feedback_num"
+                    @change="getDoctors()">
+                    <option value="0">0</option>
+                    <option value="5">>5</option>
+                    <option value="10">>10</option>
+                    <option value="15">>15</option>
+                    <option value="20">>20</option>
+                    <option value="25">>25</option>
+                </select>
+            </div>
         </div>
 
         <h2 class="text-center my-5">Doctors</h2>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center g-4 pb-5">
 
-            <div class="border d-flex align-items-center p-2 rounded col-8" v-for="(doctor) in this.doctors"
-                :key="doctor.id">
-                <div v-if="doctor.user_detail.photo" class="card_img">
-                    <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
+            <div class="col-12 col-md-6 col-lg-4 col-card" v-for="(doctor) in this.doctors" :key="doctor.id">
+
+                <div class="card">
+                    <div v-if="doctor.user_detail.photo" class="card_img">
+                        <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
+                    </div>
+                    <div v-else class="card_img">
+                        <img src="../assets/imgs/4025200.png" alt="">
+                    </div>
+                    <div class="card-body">
+                        <div class="name-email d-flex justify-content-between flex-column flex-sm-row flex-md-column">
+                            <h5 class="card-title">{{ doctor.name }} {{ doctor.surname }}
+                            </h5>
+                            <span class="doctor-email">{{
+                                doctor.email
+                            }}</span>
+                        </div>
+                        <p class="">Phone number: {{ doctor.user_detail.phone }}</p>
+                        <p>
+                            <span class="card-body-title d-block">Specializations:</span>
+                            <span class="me-1" v-for="spec in doctor.specializations">#{{ spec.title }}</span>
+                        </p>
+
+                        <p>{{ doctor.user_detail.performance }}</p>
+
+                        <p> <span class="card-body-title">Average vote:</span> {{ doctor.feedback_avg_vote / 1 }}</p>
+                        <router-link :to="{ path: `doctorslist/${doctor.slug}`, params: { doctor: doctor } }"
+                            class="btn btn-primary">Details</router-link>
+                    </div>
                 </div>
-                <div v-else class="card_img">
-                    <img src="../assets/imgs/4025200.png" alt="">
-                </div>
-                <div class="card_body">
-                    <h2>
-                        <span class="me-1">{{ doctor.name }} </span>
-                        <span>{{ doctor.surname }}</span>
-                    </h2>
-                    <p>{{ doctor.email }}</p>
 
-                    <span class="me-2" v-for="spec in doctor.specializations">{{ spec.title }}</span>
-
-                    <p>{{ doctor.user_detail.phone }}</p>
-
-                    <p>Average vote: {{ doctor.feedback_avg_vote / 1 }}</p>
-
-                    <p>{{ doctor.user_detail.performance }}</p>
-
-                    <router-link :to="{ path: `doctorslist/${doctor.slug}`, params: { doctor: doctor } }"
-                        class="btn btn-primary">Details</router-link>
-                </div>
             </div>
         </div>
 
@@ -123,21 +132,30 @@ export default {
 
 <!-- style section -->
 <style lang="scss">
-.card_img {
-    width: 35%;
-    height: 200px;
-    overflow-y: hidden;
-    padding: 1rem;
-
-    img {
-        object-fit: contain;
-        width: 100%;
-
-    }
+.col-card {
+    height: 100% !important;
 }
 
-.card_body {
-    width: 65%;
-    padding: 1rem;
+.card {
+    min-width: 300px;
+    height: 100% !important;
+
+    .card_img {
+        width: 100%;
+        height: 20rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+    }
+
+    .card-body {
+        .card-body-title {
+            text-decoration: underline;
+        }
+    }
 }
 </style>
