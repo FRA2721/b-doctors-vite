@@ -28,7 +28,7 @@ export default {
         <div class="row">
           <div
             class="jumbo-left pt-4 pb-4 col-12 col-lg-8 text-white text-center text-lg-start d-flex flex-column justify-content-center">
-            <h3>We care about you...</h3>
+            <h3 class="text-secondary">We care about you...</h3>
             <h1 class="mb-3">
               THE BEST<br />ONLINE<br />SUPPORT FOR YOUR HEALTH
             </h1>
@@ -44,13 +44,17 @@ export default {
                     ><i class="fa-regular fa-circle-play me-1"></i>
                   </a>
                 </div>
-                <div class="d-inline-block">Meet our doctors</div>
+                <div class="d-inline-block text-secondary">
+                  Meet our doctors
+                </div>
               </div>
             </div>
           </div>
           <div class="jumbo-right d-none d-lg-block col-4">
             <div class="jumbo-img">
-              <img src="../assets/imgs/jumbo-doctor.png" alt="jumbotron doctors" />
+              <img
+                src="../assets/imgs/jumbo-doctor.png"
+                alt="jumbotron doctors" />
             </div>
           </div>
         </div>
@@ -64,13 +68,14 @@ export default {
 @use "../styles/general.scss" as *;
 
 .jumbotron {
-  background-image: linear-gradient(to bottom right, #2b94f1, #21ce99);
+  background-image: linear-gradient(to bottom right, #d4e4fb, #d5f0e9);
 
   h3 {
     font-size: 1.4rem;
   }
 
   h1 {
+    color: #1f254c;
     font-size: 1.8rem;
   }
   .jumbo-img {
