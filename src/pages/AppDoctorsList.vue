@@ -24,7 +24,8 @@ export default {
             axios.get(`${this.baseUrl}/api/profiles`, {
                 params: {
                     ...this.store.docSearch && { specialization_id: this.store.docSearch },
-                    ...this.store.voto && { vote: this.store.voto }
+                    ...this.store.voto && { vote: this.store.voto },
+                    ...this.store.feedback_num && { feedback_num: this.store.feedback_num }
                 }
             }).then(resp => {
                 this.doctors = resp.data.results.user;
@@ -55,13 +56,25 @@ export default {
 
             <label for="voto">Media voti</label>
             <select class="ms-1" name="voto" id="voto" v-model="this.store.voto" @change="getDoctors()">
+                <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <input class="ms-2" type="number" placeholder="Number of feedback" v-model="this.store.feedbackNumber">
+
+            
+            <label for="number_of_feedback">Numero di Feedback</label>
+            <select class="ms-1" name="number_of_feedback" id="number_of_feedback" v-model="this.store.feedback_num" @change="getDoctors()">
+                <option value="0">0</option>
+                <option value="5">0-5</option>
+                <option value="10">5-10</option>
+                <option value="15">10-15</option>
+                <option value="20">15-20</option>
+                <option value="25"> >20</option>
+            </select>
+
         </div>
 
         <h2 class="text-center my-5">Doctors</h2>
@@ -97,7 +110,7 @@ export default {
             <h2 class="text-center">No Doctors matched :( </h2>
         </div>
     </div>
-
+  
 
 </template>
 
