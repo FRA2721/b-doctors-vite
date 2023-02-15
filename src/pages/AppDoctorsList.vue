@@ -2,6 +2,7 @@
 <script>
 import { store } from "../store";
 import axios from 'axios';
+import AppDoctorDetails from "./AppDoctorDetails.vue";
 export default {
 
     name: "AppDoctorList",
@@ -16,6 +17,7 @@ export default {
             specializations: []
         }
     },
+    components: { AppDoctorDetails },
     created() {
         this.getDoctors();
     },
@@ -64,9 +66,10 @@ export default {
                 <option value="5">5</option>
             </select>
 
-            
+
             <label for="number_of_feedback">Numero di Feedback</label>
-            <select class="ms-1" name="number_of_feedback" id="number_of_feedback" v-model="this.store.feedback_num" @change="getDoctors()">
+            <select class="ms-1" name="number_of_feedback" id="number_of_feedback" v-model="this.store.feedback_num"
+                @change="getDoctors()">
                 <option value="0">0</option>
                 <option value="5">0-5</option>
                 <option value="10">5-10</option>
@@ -81,12 +84,13 @@ export default {
 
         <div class="row justify-content-center">
 
-            <div class="border d-flex align-items-center p-2 rounded col-8" v-for="(doctor) in this.doctors" :key="doctor.id">
+            <div class="border d-flex align-items-center p-2 rounded col-8" v-for="(doctor) in this.doctors"
+                :key="doctor.id">
                 <div v-if="doctor.user_detail.photo" class="card_img">
-                    <img  :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
+                    <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
                 </div>
                 <div v-else class="card_img">
-                    <img  src="../assets/imgs/4025200.png" alt="">
+                    <img src="../assets/imgs/4025200.png" alt="">
                 </div>
                 <div class="card_body">
                     <h2>
@@ -102,6 +106,9 @@ export default {
                     <p>Average vote: {{ doctor.feedback_avg_vote / 1 }}</p>
 
                     <p>{{ doctor.user_detail.performance }}</p>
+
+                    <router-link :to="{ path: `doctorslist/${doctor.slug}`, params: { doctor: doctor } }"
+                        class="btn btn-primary">Details</router-link>
                 </div>
             </div>
         </div>
@@ -110,7 +117,7 @@ export default {
             <h2 class="text-center">No Doctors matched :( </h2>
         </div>
     </div>
-  
+
 
 </template>
 

@@ -5,6 +5,7 @@ import AppServices from './pages/AppServices.vue';
 import AppContact from './pages/AppContact.vue';
 import AppNotFound from './pages/AppNotFound.vue';
 import AppDoctorsList from './pages/AppDoctorsList.vue';
+import AppDoctorDetails from './pages/AppDoctorDetails.vue'
 
 const router = createRouter({
 
@@ -51,6 +52,15 @@ const router = createRouter({
             component: AppDoctorsList,
             meta: {
                 title: 'Doctors',
+            }
+        },
+        {
+            path: "/doctorslist/:slug",
+            name: "doctorsdetails",
+            props: true,
+            component: AppDoctorDetails,
+            meta: {
+                title: 'DoctorDetails',
             }
         },
 
