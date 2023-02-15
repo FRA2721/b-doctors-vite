@@ -36,13 +36,13 @@ export default {
   },
   components: {
     RouterLink,
-    AppJumbotron
+    AppJumbotron,
   },
   methods: {
     cleanInput() {
-      this.store.docSearch = ''
-    }
-  }
+      this.store.docSearch = "";
+    },
+  },
 };
 </script>
 
@@ -55,25 +55,37 @@ export default {
         <div class="container-fluid">
           <!-- logo -->
           <a href="/">
-            <img src="../assets/imgs/stethoscope.png" alt="logo" />
+            <img class="logo" src="../assets/imgs/logo-4.png" alt="logo" />
           </a>
-          <strong><span class="logo">B Doctors</span></strong>
+          <!-- <strong><span class="logo">B Doctors</span></strong> -->
           <!-- /logo -->
 
           <!-- hambunger menu -->
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <!-- /hamburger menu -->
 
           <!-- navbar link -->
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div class="navbar-nav links">
-
-              <router-link @click="cleanInput" :to="{ name: item.routeName }" class="nav-link justify-content-end"
-                v-for="(item, index) in links" :key="index">{{ item.label }}</router-link>
-
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarNavAltMarkup">
+            <div class="navbar-nav links text-secondary">
+              <router-link
+                @click="cleanInput"
+                :to="{ name: item.routeName }"
+                class="nav-link justify-content-end"
+                v-for="(item, index) in links"
+                :key="index"
+                >{{ item.label }}</router-link
+              >
             </div>
           </div>
           <!-- /navbar links -->
@@ -90,11 +102,13 @@ export default {
 @use "../styles/general.scss" as *;
 
 header {
-  background-image: linear-gradient(to bottom right, #2b94f1, #21ce99);
+  background-image: linear-gradient(to right, #d4e4fb, #d5f0e9);
+  // background-image: linear-gradient(to bottom right, #d4e4fb, #d5f0e9);
 }
 
 .logo {
-  color: rgb(15, 15, 61);
+  color: #1f254c;
+  width: 4rem;
 }
 
 // img general formatting section
@@ -105,12 +119,12 @@ img {
 // links general formatting section
 .links {
   a {
-    color: white;
+    color: #606b87;
 
     &:after {
       display: block;
       content: "";
-      border-bottom: solid 3px white;
+      border-bottom: solid 3px #606b87;
       transform: scaleX(0);
       transition: transform 250ms ease-in-out;
     }
@@ -119,21 +133,21 @@ img {
       transform: scaleX(1);
     }
 
-    &.fromRight:after {
-      transform-origin: 100% 50%;
-    }
+    // &.fromRight:after {
+    //   transform-origin: 100% 50%;
+    // }
 
-    &.fromLeft:after {
-      transform-origin: 0% 50%;
-    }
+    // &.fromLeft:after {
+    //   transform-origin: 0% 50%;
+    // }
 
     &:hover {
       transition-duration: 0.5s;
-      color: rgb(255, 255, 255);
+      color: #606b87;
     }
 
-    &:active {
-      color: lightgrey;
+    .active {
+      color: rgb(101, 24, 24);
     }
   }
 }
