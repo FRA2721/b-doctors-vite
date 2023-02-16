@@ -66,7 +66,7 @@ export default {
 
             axios.post(`${this.baseUrl}/api/feedback` , data).then( resp => {
                 this.vote = ''
-                this.reviewer_name = ''
+                this.reviewer = ''
                 this.review = ''
             })
         }

@@ -1,5 +1,6 @@
 <!-- script section -->
 <script>
+
 import axios from "axios";
 import { store } from "../store";
 import { RouterLink } from "vue-router";
@@ -48,8 +49,7 @@ export default {
 <!-- /script section -->
 
 <!-- template section -->
-<template>
-  <!-- jumbotron section -->
+<template><!-- jumbotron section -->
   <div>
     <AppJumbotron />
   </div>
@@ -71,11 +71,11 @@ export default {
             <div v-for="doctor in this.doctors" class="col mb-5" :key="doctor.id">
               <div class="card">
                 <div v-if="doctor.user_detail.photo" class="card_img">
-                        <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
-                    </div>
-                    <div v-else class="card_img">
-                        <img src="../assets/imgs/4025200.png" alt="">
-                    </div>
+                  <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
+                </div>
+                <div v-else class="card_img">
+                  <img src="../assets/imgs/4025200.png" alt="">
+                </div>
                 <div class="card-body">
                   <h5 class="card-title">
                     {{ doctor.name }} {{ doctor.surname }}
@@ -93,7 +93,7 @@ export default {
         </div>
       </div>
     </div>
-  </main>
+</main>
 </template>
 <!-- /template section -->
 
