@@ -64,7 +64,7 @@ export default {
                 user_id: this.doctor.id
             }
 
-            axios.post(`${this.baseUrl}/api/feedback` , data).then( resp => {
+            axios.post(`${this.baseUrl}/api/feedback`, data).then(resp => {
                 this.vote = ''
                 this.reviewer = ''
                 this.review = ''
@@ -82,7 +82,7 @@ export default {
         <h1>Details of: {{ doctor.name }}</h1>
 
 
-        <div class="col-6 mx-auto mt-5 p-3 border rounded">
+        <div class="col-12 col-lg-6 mx-auto mt-5 p-3 border rounded">
             <h2>leave a message</h2>
             <form @submit.prevent="sendMessage()">
                 <div>
@@ -105,13 +105,14 @@ export default {
                 </div>
             </form>
         </div>
-        <div class="col-6 mx-auto mt-5 p-3 border rounded">
+        <div class="col-12 col-lg-6 mx-auto mt-5 p-3 border rounded">
             <h2>Feedback</h2>
             <form @submit.prevent="sendFeedback()">
 
                 <div>
                     <label class="form-label" for="reviewer_name">Name</label>
-                    <input class="form-control" required id="reviewer_name" name="reviewer_name" v-model="reviewer" type="text">
+                    <input class="form-control" required id="reviewer_name" name="reviewer_name" v-model="reviewer"
+                        type="text">
                 </div>
 
                 <div>
@@ -128,7 +129,8 @@ export default {
 
                 <div>
                     <label for="review">review</label>
-                    <textarea required class="form-control" v-model="review" name="review" id="review" cols="30"></textarea>
+                    <textarea required class="form-control" v-model="review" name="review" id="review"
+                        cols="30"></textarea>
                 </div>
 
 
@@ -138,8 +140,10 @@ export default {
             </form>
         </div>
 
-</div>
+    </div>
 </template>
 
 <!-- style section -->
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>
