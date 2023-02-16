@@ -6,8 +6,7 @@ export default {
 };
 </script>
 
-<template>
-  <!-- <section class="d-flex jumbotron-section">
+<template><!-- <section class="d-flex jumbotron-section">
         <div class="jumbotron">
             <div class="jumbotron-container">
                 <h3>We care about you...</h3>
@@ -22,42 +21,42 @@ export default {
         </div>
     </section> -->
 
-  <section class="jumbotron">
-    <div class="jumbotron-container">
-      <div class="container px-5">
-        <div class="row">
-          <div
-            class="jumbo-left pt-4 pb-4 col-12 col-lg-8 text-white text-center text-lg-start d-flex flex-column justify-content-center">
-            <h3 class="text-secondary">We care about you...</h3>
-            <h1 class="mb-3">
-              THE BEST<br />ONLINE<br />SUPPORT FOR YOUR HEALTH
-            </h1>
-
-            <div class="call-to-action row g-2">
-              <div class="col-12 col-md-6 col-lg-3 col-xl-12">
-                <a href="#" class="btn mt-2 btn-send">READ MORE</a>
-              </div>
+      <section class="jumbotron">
+        <div class="jumbotron-container">
+          <div class="container px-5">
+            <div class="row">
               <div
-                class="col-12 col-md-6 col-lg-9 col-xl-12 d-flex mt-4 justify-content-center justify-content-lg-start align-items-center">
-                <div class="d-inline-block">
-                  <a href="#" class="play-btn me-2"><i class="fa-regular fa-circle-play me-1"></i>
-                  </a>
-                </div>
-                <div class="d-inline-block text-secondary">
-                  Meet our doctors
+                class="jumbo-left pt-4 pb-4 col-12 col-lg-8 text-white text-center text-lg-start d-flex flex-column justify-content-center">
+                <h3 class="text-secondary">We care about you...</h3>
+                <h1 class="mb-3">
+                  THE BEST<br />ONLINE<br />SUPPORT FOR YOUR HEALTH
+                </h1>
+
+                <div class="call-to-action row g-2">
+                  <div class="col-12 col-md-6 col-lg-3 col-xl-12">
+                    <a href="#" class="btn mt-2 btn-primary">READ MORE</a>
+                  </div>
+                  <div
+                    class="col-12 col-md-6 col-lg-9 col-xl-12 d-flex mt-4 justify-content-center justify-content-lg-start align-items-center">
+                    <div class="d-inline-block">
+                      <a href="#" class="play-btn me-2"><i class="fa-regular fa-circle-play me-1"></i>
+                      </a>
+                    </div>
+                    <div class="d-inline-block text-secondary">
+                      Meet our doctors
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="jumbo-right d-none d-lg-block col-4">
-            <div class="jumbo-img">
-              <img src="../assets/imgs/jumbo-doctor.png" alt="jumbotron doctors" />
+              <div class="jumbo-right d-none d-lg-block col-4">
+                <div class="jumbo-img">
+                  <img src="../assets/imgs/jumbo-doctor.png" alt="jumbotron doctors" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </template>
 
 <!-- style section -->

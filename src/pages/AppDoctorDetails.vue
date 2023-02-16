@@ -21,7 +21,7 @@ export default {
             msgSuccess: false,
             msgLoading: false,
             fbSuccess: false,
-            fbLoading:false,
+            fbLoading: false,
             errors: {}
         }
     },
@@ -107,80 +107,97 @@ export default {
             <div v-else class="text-center img-container mb-4">
                 <img class="" src="../assets/imgs/4025200.png" alt="">
             </div>
-            <div class="text-container d-flex flex-column flex-md-row justify-content-md-center">
+            <div class="text-container d-flex flex-column flex-md-row justify-content-md-center mb-3">
                 <h6 class="me-3 text-center" v-for="specialization in doctor.specializations"> {{
                     specialization.title
                 }}</h6>
             </div>
+            <div class="d-flex justify-content-center row text-center mb-4">
+                <div class="col-12 col-md-6">
+                    Email: {{ doctor.email }}
+                </div>
+                <div class="col-12 col-md-6">
+                    Phone: {{ doctor.user_detail.phone }}
+                </div>
+            </div>
         </div>
 
-        <div class="col-12 col-lg-6 mx-auto mt-5 p-3 border rounded">
-            <h2>Leave a message</h2>
-            <div class="alert alert-success text-center" v-if="msgSuccess">
-                Your message was sussessfully sended!
+
+        <div class="row g-3 justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="border rounded p-4">
+                    <h2>Leave a message</h2>
+                    <div class="alert alert-success text-center" v-if="msgSuccess">
+                        Your message was sussessfully sended!
+                    </div>
+                    <div class="text-center" v-if="msgLoading">Invio ...</div>
+                    <form @submit.prevent="sendMessage()">
+                        <div>
+                            <label class="form-label" for="name">Name:</label>
+                            <input class="form-control mb-3" required id="name" name="name" v-model="name" type="text"
+                                placeholder="Enter your name">
+                        </div>
+
+                        <div>
+                            <label class="form-label" for="email">Email:</label>
+                            <input class="form-control mb-3" required id="email" name="email" v-model="email" type="email"
+                                placeholder="Enter your email">
+                        </div>
+
+                        <div>
+                            <label class="form-label" for="text">Message:</label>
+                            <textarea required class="form-control mb-3" name="text" id="text" cols="30" v-model="text"
+                                placeholder="Write your message"></textarea>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary mt-3">Send</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="text-center" v-if="msgLoading">Invio ...</div>
-            <form @submit.prevent="sendMessage()">
-                <div>
-                    <label class="form-label" for="name">Name:</label>
-                    <input class="form-control mb-3" required id="name" name="name" v-model="name" type="text"
-                        placeholder="Enter your name">
-                </div>
 
-                <div>
-                    <label class="form-label" for="email">Email:</label>
-                    <input class="form-control mb-3" required id="email" name="email" v-model="email" type="email"
-                        placeholder="Enter your email">
-                </div>
 
-                <div>
-                    <label class="form-label" for="text">Message:</label>
-                    <textarea required class="form-control mb-3" name="text" id="text" cols="30" v-model="text"
-                        placeholder="Write your message"></textarea>
-                </div>
+            <div class="col-12 col-lg-9 mb-4">
+                <div class="border rounded p-4">
+                    <h2>Feedback</h2>
+                    <div class="alert alert-success text-center" v-if="fbSuccess">
+                        thanks for your feedback!
+                    </div>
+                    <div class="text-center" v-if="fbLoading">Invio ...</div>
+                    <form @submit.prevent="sendFeedback()">
 
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-send mt-3">Send</button>
+                        <div>
+                            <label class="form-label" for="reviewer_name">Name:</label>
+                            <input class="form-control mb-3" required id="reviewer_name" name="reviewer_name"
+                                v-model="reviewer" type="text" placeholder="Enter your name">
+                        </div>
+
+                        <div>
+                            <label for="vote">Vote:</label>
+                            <select required class="form-select mb-3" v-model="vote" name="vote" id="vote">
+                                <option value="0">Very bad</option>
+                                <option value="1">Bad</option>
+                                <option value="2">Not bad</option>
+                                <option value="3">Good</option>
+                                <option value="4">Very good</option>
+                                <option value="5">Perfect</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="review">Review:</label>
+                            <textarea required class="form-control mb-3" v-model="review" name="review" id="review"
+                                cols="30" placeholder="Enter your review"></textarea>
+                        </div>
+
+
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary mt-3">Send</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </div>
-        <div class="col-12 col-lg-6 mx-auto mt-5 p-3 border rounded">
-            <h2>Feedback</h2>
-            <div class="alert alert-success text-center" v-if="fbSuccess">
-                thanks for your feedback!
             </div>
-            <div class="text-center" v-if="fbLoading">Invio ...</div>
-            <form @submit.prevent="sendFeedback()">
-
-                <div>
-                    <label class="form-label" for="reviewer_name">Name:</label>
-                    <input class="form-control mb-3" required id="reviewer_name" name="reviewer_name" v-model="reviewer"
-                        type="text" placeholder="Enter your name">
-                </div>
-
-                <div>
-                    <label for="vote">Vote:</label>
-                    <select required class="form-select mb-3" v-model="vote" name="vote" id="vote">
-                        <option value="0">Very bad</option>
-                        <option value="1">Bad</option>
-                        <option value="2">Not bad</option>
-                        <option value="3">Good</option>
-                        <option value="4">Very good</option>
-                        <option value="5">Perfect</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="review">Review:</label>
-                    <textarea required class="form-control mb-3" v-model="review" name="review" id="review" cols="30"
-                        placeholder="Enter your review"></textarea>
-                </div>
-
-
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-send mt-3">Send</button>
-                </div>
-            </form>
         </div>
 
 </div>

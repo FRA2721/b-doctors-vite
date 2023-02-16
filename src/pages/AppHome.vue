@@ -93,7 +93,7 @@ export default {
                   <p>{{ doctor.email }}</p>
                   <div class="d-flex justify-content-end">
                     <router-link :to="{ path: `doctorslist/${doctor.slug}`, params: { doctor: doctor } }"
-                      class="btn btn-send">Details</router-link>
+                      class="btn btn-primary">Details</router-link>
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export default {
         </div>
       </div>
     </div>
-  </main>
+</main>
 </template>
 <!-- /template section -->
 
