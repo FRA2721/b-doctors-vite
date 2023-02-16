@@ -49,7 +49,8 @@ export default {
 <!-- /script section -->
 
 <!-- template section -->
-<template><!-- jumbotron section -->
+<!-- jumbotron section -->
+<template>
   <div>
     <AppJumbotron />
   </div>
@@ -67,8 +68,8 @@ export default {
       <div class="container mt-5 bg-light pt-5">
         <div class="evidenza">
           <h2 class="text-center">Our Doctors</h2>
-          <div class="row row-cols-1 row-cols-md-3 px-5 g-5 pt-5">
-            <div v-for="doctor in this.doctors" class="col mb-5" :key="doctor.id">
+          <div class="row pt-5">
+            <div v-for="doctor in this.doctors" class="col-12 col-md-6 col-lg-4 mb-5" :key="doctor.id">
               <div class="card">
                 <div v-if="doctor.user_detail.photo" class="card_img">
                   <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
@@ -93,7 +94,7 @@ export default {
         </div>
       </div>
     </div>
-</main>
+  </main>
 </template>
 <!-- /template section -->
 
