@@ -69,7 +69,7 @@ export default {
         <div class="evidenza">
           <h2 class="text-center">Our Doctors</h2>
           <div class="row pt-5">
-            <div v-for="doctor in this.doctors" class="col-12 col-md-6 col-lg-4 mb-5" :key="doctor.id">
+            <div v-for="doctor in this.doctors" class="col-12 col-md-6 col-lg-4 mb-5 col-card" :key="doctor.id">
               <div class="card">
                 <div v-if="doctor.user_detail.photo" class="card_img">
                   <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
@@ -100,8 +100,11 @@ export default {
 
 
 <style lang="scss" scoped>
+.col-card {
+  height: 100% !important;
+}
+
 .card {
-  min-width: 300px;
   height: 100% !important;
 
   .card_img {
@@ -113,6 +116,12 @@ export default {
       height: 100%;
       object-fit: cover;
       object-position: top;
+    }
+  }
+
+  .card-body {
+    .card-body-title {
+      text-decoration: underline;
     }
   }
 }
