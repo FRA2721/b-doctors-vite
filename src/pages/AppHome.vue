@@ -1,6 +1,8 @@
 <!-- script section -->
 <script>
 
+
+
 import axios from "axios";
 import { store } from "../store";
 import { RouterLink } from "vue-router";
@@ -16,6 +18,7 @@ export default {
       routeName: "doctorslist",
       baseUrl: "http://127.0.0.1:8000",
       doctors: [],
+      loading: false
     };
   },
 
@@ -25,23 +28,23 @@ export default {
 
   methods: {
     getDoctors() {
-      axios
-        .get(`${this.baseUrl}/api/profiles`, {
-          params: {
-            ...(this.store.docSearch && {
-              specialization_id: this.store.docSearch,
-            }),
-          },
-        })
-        .then((resp) => {
-          this.doctors = resp.data.results.user;
-          this.store.specializations = resp.data.results.specializations;
-          console.log(this.doctors);
-          this.loading = false;
-          if (this.store.docSearch) {
-            this.$router.push({ name: "doctorslist" });
-          }
-        });
+      this.loading = true;
+      axios.get(`${this.baseUrl}/api/profiles`, {
+        params: {
+          ...(this.store.docSearch && {
+            specialization_id: this.store.docSearch,
+          }),
+        },
+      }).then((resp) => {
+        this.doctors = resp.data.results.user;
+        this.store.specializations = resp.data.results.specializations;
+        console.log(this.doctors);
+        this.loading = false;
+        if (this.store.docSearch) {
+          this.$router.push({ name: "doctorslist" });
+        }
+        this.loading = false
+      });
     },
   },
 };
@@ -68,8 +71,9 @@ export default {
       <div class="container mt-5 bg-light pt-5">
         <div class="evidenza">
           <h2 class="text-center">Our Doctors</h2>
-          <div class="row pt-5">
-            <div v-for="doctor in this.doctors" class="col-12 col-md-6 col-lg-4 mb-5 col-card" :key="doctor.id">
+          <div class="row pt-5" >
+            <div v-if="loading"> loading</div>
+            <div v-else v-for="doctor in this.doctors" class="col-12 col-md-6 col-lg-4 mb-5 col-card" :key="doctor.id">
               <div class="card">
                 <div v-if="doctor.user_detail.photo" class="card_img">
                   <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
@@ -94,7 +98,7 @@ export default {
         </div>
       </div>
     </div>
-  </main>
+</main>
 </template>
 <!-- /template section -->
 
