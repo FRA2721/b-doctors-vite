@@ -79,29 +79,45 @@ export default {
 <!-- template section -->
 <template>
     <div class="container">
-        <h1>Details of: {{ doctor.name }}</h1>
+        <h1 class="mt-3 mb-3 text-center">{{ doctor.name }} {{ doctor.surname }}</h1>
+
+        <div class="mt-5 d-flex flex-column">
+            <div class="text-center img-container mb-4">
+                <img class="" :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
+            </div>
+            <div class="text-container d-flex flex-column flex-md-row justify-content-md-center">
+                <h6 class="me-3 text-center" v-for="specialization in doctor.specializations"> {{
+                    specialization.title
+                }}</h6>
+            </div>
+        </div>
+
+
 
 
         <div class="col-12 col-lg-6 mx-auto mt-5 p-3 border rounded">
-            <h2>leave a message</h2>
+            <h2>Leave a message</h2>
             <form @submit.prevent="sendMessage()">
                 <div>
-                    <label class="form-label" for="name">Name</label>
-                    <input class="form-control" required id="name" name="name" v-model="name" type="text">
+                    <label class="form-label" for="name">Name:</label>
+                    <input class="form-control mb-3" required id="name" name="name" v-model="name" type="text"
+                        placeholder="Enter your name">
                 </div>
 
                 <div>
-                    <label class="form-label" for="email">email</label>
-                    <input class="form-control" required id="email" name="email" v-model="email" type="email">
+                    <label class="form-label" for="email">Email:</label>
+                    <input class="form-control mb-3" required id="email" name="email" v-model="email" type="email"
+                        placeholder="Enter your email">
                 </div>
 
                 <div>
-                    <label class="form-label" for="text">message:</label>
-                    <textarea required class="form-control" name="text" id="text" cols="30" v-model="text"></textarea>
+                    <label class="form-label" for="text">Message:</label>
+                    <textarea required class="form-control mb-3" name="text" id="text" cols="30" v-model="text"
+                        placeholder="Write your message"></textarea>
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary mt-3">Send!</button>
+                    <button type="submit" class="btn btn-send mt-3">Send</button>
                 </div>
             </form>
         </div>
@@ -110,32 +126,32 @@ export default {
             <form @submit.prevent="sendFeedback()">
 
                 <div>
-                    <label class="form-label" for="reviewer_name">Name</label>
-                    <input class="form-control" required id="reviewer_name" name="reviewer_name" v-model="reviewer"
-                        type="text">
+                    <label class="form-label" for="reviewer_name">Name:</label>
+                    <input class="form-control mb-3" required id="reviewer_name" name="reviewer_name" v-model="reviewer"
+                        type="text" placeholder="Enter your name">
                 </div>
 
                 <div>
-                    <label for="vote">vote:</label>
-                    <select required class="form-select" v-model="vote" name="vote" id="vote">
-                        <option value="0">0 - very bad</option>
-                        <option value="1">1 - bad</option>
-                        <option value="2">2 - not bad</option>
-                        <option value="3">3 - good</option>
-                        <option value="4">4 - very good</option>
-                        <option value="5">5 - perfect</option>
+                    <label for="vote">Vote:</label>
+                    <select required class="form-select mb-3" v-model="vote" name="vote" id="vote">
+                        <option value="0">Very bad</option>
+                        <option value="1">Bad</option>
+                        <option value="2">Not bad</option>
+                        <option value="3">Good</option>
+                        <option value="4">Very good</option>
+                        <option value="5">Perfect</option>
                     </select>
                 </div>
 
                 <div>
-                    <label for="review">review</label>
-                    <textarea required class="form-control" v-model="review" name="review" id="review"
-                        cols="30"></textarea>
+                    <label for="review">Review:</label>
+                    <textarea required class="form-control mb-3" v-model="review" name="review" id="review" cols="30"
+                        placeholder="Enter your review"></textarea>
                 </div>
 
 
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary mt-3">Send!</button>
+                    <button type="submit" class="btn btn-send mt-3">Send</button>
                 </div>
             </form>
         </div>
@@ -145,5 +161,26 @@ export default {
 
 <!-- style section -->
 <style lang="scss">
+.img-container {
+    img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid lightgray;
+    }
+}
 
+.btn-send {
+    border: 2px solid blue !important;
+    color: blue !important;
+    transition: 0.15s !important;
+
+    &:hover {
+        transform: scale(1.1);
+        border: 2px solid blue;
+        color: blue;
+        opacity: 1;
+    }
+}
 </style>

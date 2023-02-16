@@ -84,7 +84,7 @@ export default {
             </div>
         </div>
 
-        <h2 class="text-center my-5">Doctors</h2>
+        <h2 class="text-center my-5 our-doctors">Doctors</h2>
 
         <div class="row justify-content-center g-4 pb-5">
 
@@ -115,7 +115,7 @@ export default {
 
                         <p> <span class="card-body-title">Average vote:</span> {{ doctor.feedback_avg_vote / 1 }}</p>
                         <router-link :to="{ path: `doctorslist/${doctor.slug}`, params: { doctor: doctor } }"
-                            class="btn btn-primary">Details</router-link>
+                            class="btn btn-send">Details</router-link>
                     </div>
                 </div>
 
@@ -156,6 +156,31 @@ export default {
         .card-body-title {
             text-decoration: underline;
         }
+    }
+}
+
+.our-doctors {
+
+    color: #20254c;
+
+    &::before {
+        content: "";
+        display: inline-block;
+        width: 10%;
+        height: 3px;
+        background-color: #20254c9e;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 10%;
+        height: 3px;
+        background-color: #20254c9e;
+        margin-left: 10px;
+        vertical-align: middle;
     }
 }
 </style>

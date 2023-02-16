@@ -35,13 +35,12 @@ export default {
 
             <div class="call-to-action row g-2">
               <div class="col-12 col-md-6 col-lg-3 col-xl-12">
-                <a href="#" class="btn mt-2 btn-primary">READ MORE</a>
+                <a href="#" class="btn mt-2 btn-send">READ MORE</a>
               </div>
               <div
                 class="col-12 col-md-6 col-lg-9 col-xl-12 d-flex mt-4 justify-content-center justify-content-lg-start align-items-center">
                 <div class="d-inline-block">
-                  <a href="#" class="play-btn me-2"
-                    ><i class="fa-regular fa-circle-play me-1"></i>
+                  <a href="#" class="play-btn me-2"><i class="fa-regular fa-circle-play me-1"></i>
                   </a>
                 </div>
                 <div class="d-inline-block text-secondary">
@@ -52,9 +51,7 @@ export default {
           </div>
           <div class="jumbo-right d-none d-lg-block col-4">
             <div class="jumbo-img">
-              <img
-                src="../assets/imgs/jumbo-doctor.png"
-                alt="jumbotron doctors" />
+              <img src="../assets/imgs/jumbo-doctor.png" alt="jumbotron doctors" />
             </div>
           </div>
         </div>
@@ -78,12 +75,14 @@ export default {
     color: #1f254c;
     font-size: 1.8rem;
   }
+
   .jumbo-img {
     img {
       width: 100%;
       padding-top: 8rem;
     }
   }
+
   .play-btn {
     i {
       font-size: 1.7rem;

@@ -61,7 +61,7 @@ export default {
     <div class="container pt-3">
       <div class="searchbar col-4 m-auto mt-3">
         <select class="form-select" @change="getDoctors" v-model="store.docSearch" placeholder="test">
-          <option value="">choose a specialization</option>
+          <option value="">Choose a specialization</option>
           <option v-for="spec in store.specializations" :value="spec.id" :key="spec.id">
             {{ spec.title }}
           </option>
@@ -70,11 +70,11 @@ export default {
 
       <div class="container mt-5 bg-light pt-5">
         <div class="evidenza">
-          <h2 class="text-center">Our Doctors</h2>
-          <div class="row pt-5" >
+          <h2 class="text-center our-doctors">Our Doctors</h2>
+          <div class="row pt-5 g-5">
             <div v-if="loading"> loading</div>
             <div v-else v-for="doctor in this.doctors" class="col-12 col-md-6 col-lg-4 mb-5 col-card" :key="doctor.id">
-              <div class="card">
+              <div class="card bg-body-tertiary rounded">
                 <div v-if="doctor.user_detail.photo" class="card_img">
                   <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
                 </div>
@@ -91,6 +91,10 @@ export default {
                     </span>
                   </p>
                   <p>{{ doctor.email }}</p>
+                  <div class="d-flex justify-content-end">
+                    <router-link :to="{ path: `doctorslist/${doctor.slug}`, params: { doctor: doctor } }"
+                      class="btn btn-send">Details</router-link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -98,7 +102,7 @@ export default {
         </div>
       </div>
     </div>
-</main>
+  </main>
 </template>
 <!-- /template section -->
 
@@ -108,27 +112,62 @@ export default {
   height: 100% !important;
 }
 
-.card {
-  height: 100% !important;
+.our-doctors {
 
-  .card_img {
-    width: 100%;
-    height: 20rem;
+  color: #20254c;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 10%;
+    height: 3px;
+    background-color: #20254c9e;
+    margin-right: 10px;
+    vertical-align: middle;
   }
 
-  .card-body {
-    .card-body-title {
-      text-decoration: underline;
-    }
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 10%;
+    height: 3px;
+    background-color: #20254c9e;
+    margin-left: 10px;
+    vertical-align: middle;
   }
 }
+
+.card {
+  height: 100% !important;
+  transition: 0.20s;
+
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.card_img {
+  width: 100%;
+  height: 20rem;
+
+
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+.card-body {
+  .card-body-title {
+    text-decoration: underline;
+  }
+}
+
 
 .evidenza {
   min-height: 200px;
