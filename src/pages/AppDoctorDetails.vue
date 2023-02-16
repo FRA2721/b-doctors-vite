@@ -18,7 +18,10 @@ export default {
             vote: null,
             review: '',
             reviewer: '',
-            success: false,
+            msgSuccess: false,
+            msgLoading: false,
+            fbSuccess: false,
+            fbLoading:false,
             errors: {}
         }
     },
@@ -39,6 +42,7 @@ export default {
 
 
         sendMessage() {
+            this.msgLoading = true
             const data = {
                 name: this.name,
                 email: this.email,
@@ -47,16 +51,23 @@ export default {
             };
 
             axios.post(`${this.baseUrl}/api/messages`, data).then(resp => {
-                this.success = resp.data.success;
+                this.msgSuccess = resp.data.success;
 
-                this.name = "";
-                this.email = "";
-                this.text = "";
-
+                if (this.msgSuccess) {
+                    this.name = "";
+                    this.email = "";
+                    this.text = "";
+                } else {
+                    console.log(resp.data);
+                    this.errors = resp.data.errors;
+                }
             })
+            this.msgLoading = false
         },
 
         sendFeedback() {
+
+            this.fbLoading = true
             const data = {
                 vote: this.vote,
                 reviewer_name: this.reviewer,
@@ -65,9 +76,17 @@ export default {
             }
 
             axios.post(`${this.baseUrl}/api/feedback`, data).then(resp => {
-                this.vote = ''
-                this.reviewer = ''
-                this.review = ''
+                this.fbSuccess = resp.data.success;
+
+                if (this.fbSuccess) {
+                    this.vote = ''
+                    this.reviewer = ''
+                    this.review = ''
+                } else {
+                    console.log(resp.data);
+                    this.errors = resp.data.errors;
+                }
+                this.fbLoading = false
             })
         }
     },
@@ -82,8 +101,11 @@ export default {
         <h1 class="mt-3 mb-3 text-center">{{ doctor.name }} {{ doctor.surname }}</h1>
 
         <div class="mt-5 d-flex flex-column">
-            <div class="text-center img-container mb-4">
+            <div v-if="doctor.user_detail.photo" class="text-center img-container mb-4">
                 <img class="" :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
+            </div>
+            <div v-else class="text-center img-container mb-4">
+                <img class="" src="../assets/imgs/4025200.png" alt="">
             </div>
             <div class="text-container d-flex flex-column flex-md-row justify-content-md-center">
                 <h6 class="me-3 text-center" v-for="specialization in doctor.specializations"> {{
@@ -92,11 +114,12 @@ export default {
             </div>
         </div>
 
-
-
-
         <div class="col-12 col-lg-6 mx-auto mt-5 p-3 border rounded">
             <h2>Leave a message</h2>
+            <div class="alert alert-success text-center" v-if="msgSuccess">
+                Your message was sussessfully sended!
+            </div>
+            <div class="text-center" v-if="msgLoading">Invio ...</div>
             <form @submit.prevent="sendMessage()">
                 <div>
                     <label class="form-label" for="name">Name:</label>
@@ -123,6 +146,10 @@ export default {
         </div>
         <div class="col-12 col-lg-6 mx-auto mt-5 p-3 border rounded">
             <h2>Feedback</h2>
+            <div class="alert alert-success text-center" v-if="fbSuccess">
+                thanks for your feedback!
+            </div>
+            <div class="text-center" v-if="fbLoading">Invio ...</div>
             <form @submit.prevent="sendFeedback()">
 
                 <div>
@@ -156,7 +183,7 @@ export default {
             </form>
         </div>
 
-    </div>
+</div>
 </template>
 
 <!-- style section -->
