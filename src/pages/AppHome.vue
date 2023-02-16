@@ -56,16 +56,9 @@ export default {
   <main>
     <div class="container pt-3">
       <div class="searchbar col-4 m-auto mt-3">
-        <select
-          class="form-select"
-          @change="getDoctors"
-          v-model="store.docSearch"
-          placeholder="test">
+        <select class="form-select" @change="getDoctors" v-model="store.docSearch" placeholder="test">
           <option value="">choose a specialization</option>
-          <option
-            v-for="spec in store.specializations"
-            :value="spec.id"
-            :key="spec.id">
+          <option v-for="spec in store.specializations" :value="spec.id" :key="spec.id">
             {{ spec.title }}
           </option>
         </select>
@@ -75,24 +68,20 @@ export default {
         <div class="evidenza">
           <h2 class="text-center">Our Doctors</h2>
           <div class="row row-cols-1 row-cols-md-3 px-5 g-5 pt-5">
-            <div
-              v-for="doctor in this.doctors"
-              class="col mb-5"
-              :key="doctor.id">
+            <div v-for="doctor in this.doctors" class="col mb-5" :key="doctor.id">
               <div class="card">
-                <img
-                  src="../assets/imgs/doc-7.jpg"
-                  class="card-img-top"
-                  alt="..." />
+                <div v-if="doctor.user_detail.photo" class="card_img">
+                        <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
+                    </div>
+                    <div v-else class="card_img">
+                        <img src="../assets/imgs/4025200.png" alt="">
+                    </div>
                 <div class="card-body">
                   <h5 class="card-title">
                     {{ doctor.name }} {{ doctor.surname }}
                   </h5>
                   <p class="card-text">
-                    <span
-                      class="fw-bold"
-                      v-for="specialization in doctor.specializations"
-                      :key="specialization.id">
+                    <span class="fw-bold" v-for="specialization in doctor.specializations" :key="specialization.id">
                       #{{ specialization.title }}
                     </span>
                   </p>
@@ -108,22 +97,27 @@ export default {
 </template>
 <!-- /template section -->
 
-<!-- style section -->
+
 <style lang="scss" scoped>
-// .jumbotron {
-//     min-height: 500px;
-// }
+.card {
+  min-width: 300px;
+  height: 100% !important;
 
-img {
-  max-width: 100%;
+  .card_img {
+    width: 100%;
+    height: 20rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
 }
-
-// .card-img-top {
-//     width: 600px;
-// }
 
 .evidenza {
   min-height: 200px;
 }
 </style>
-<!-- /style section -->
+
