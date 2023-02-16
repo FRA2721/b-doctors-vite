@@ -59,13 +59,15 @@ export default {
   </div>
   <main>
     <div class="container pt-3">
-      <div class="searchbar col-4 m-auto mt-3">
-        <select class="form-select" @change="getDoctors" v-model="store.docSearch" placeholder="test">
-          <option value="">Choose a specialization</option>
-          <option v-for="spec in store.specializations" :value="spec.id" :key="spec.id">
-            {{ spec.title }}
-          </option>
-        </select>
+      <div class="row">
+        <div class="searchbar m-auto mt-3 col-12 col-md-8 col-lg-6">
+          <select class="form-select" @change="getDoctors" v-model="store.docSearch" placeholder="test">
+            <option value="">Choose a specialization</option>
+            <option v-for="spec in store.specializations" :value="spec.id" :key="spec.id">
+              {{ spec.title }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div class="container mt-5 bg-light pt-5">
