@@ -100,24 +100,34 @@ export default {
     <div class="container">
         <h1 class="mt-3 mb-3 text-center">{{ doctor.name }} {{ doctor.surname }}</h1>
 
-        <div class="mt-5 d-flex flex-column">
-            <div v-if="doctor.user_detail.photo" class="text-center img-container mb-4">
-                <img class="" :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
-            </div>
-            <div v-else class="text-center img-container mb-4">
-                <img class="" src="../assets/imgs/4025200.png" alt="">
-            </div>
-            <div class="text-container d-flex flex-column flex-md-row justify-content-md-center mb-3">
-                <h6 class="me-3 text-center" v-for="specialization in doctor.specializations"> {{
-                    specialization.title
-                }}</h6>
-            </div>
-            <div class="d-flex justify-content-center row text-center mb-4">
-                <div class="col-12 col-md-6">
-                    Email: {{ doctor.email }}
+        <div class="profile d-flex justify-content-center">
+            <div class="profile-container d-flex flex-column flex-md-row align-items-center justify-content-around col-9">
+                <div class="img-container">
+
+                    <img class="profile-img" v-if="doctor.user_detail.photo"
+                        :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
+                    <img v-else class="" src="../assets/imgs/4025200.png" alt="">
+
                 </div>
-                <div class="col-12 col-md-6">
-                    Phone: {{ doctor.user_detail.phone }}
+                <div class="info-container">
+                    <div class="text-center text-md-start">
+                        <div class="">
+                            <h5 class="">{{ doctor.name }} {{ doctor.surname }}
+                            </h5>
+                            <span class="doctor-email mb-2"> <i class="fa-solid fa-envelope"></i> {{
+                                doctor.email
+                            }}</span>
+                        </div>
+                        <p class=""> <i class="fa-solid fa-phone"></i> {{ doctor.user_detail.phone }}</p>
+                        <p>
+                            <span class="me-1 d-block d-md-inline-block" v-for="spec in doctor.specializations"> <i
+                                    class="fa-solid fa-hashtag"></i> {{
+                                        spec.title }}</span>
+                        </p>
+
+                        <p>{{ doctor.user_detail.performance }}</p>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -200,31 +210,23 @@ export default {
             </div>
         </div>
 
-</div>
+    </div>
 </template>
 
 <!-- style section -->
-<style lang="scss">
+<style lang="scss" scoped>
 .img-container {
+    width: 15rem;
+    height: 15rem;
+
     img {
-        width: 250px;
-        height: 250px;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        border-radius: 50%;
-        border: 5px solid lightgray;
     }
 }
 
-.btn-send {
-    border: 2px solid blue !important;
-    color: blue !important;
-    transition: 0.15s !important;
-
-    &:hover {
-        transform: scale(1.1);
-        border: 2px solid blue;
-        color: blue;
-        opacity: 1;
-    }
+.profile-img {
+    height: 1rem;
 }
 </style>

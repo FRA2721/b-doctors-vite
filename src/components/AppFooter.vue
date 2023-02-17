@@ -18,8 +18,8 @@ export default {
 <template>
   <footer>
     <div class="container pt-5 pb-5">
-      <div class="d-flex flex-column flex-md-row">
-        <div class="left-container">
+      <div class="d-flex flex-column flex-md-row g-4 row justify-content-around">
+        <div class="left-container col-12 col-lg-4">
           <h4>B Doctors, Online Medicine</h4>
           <hr />
           <p>
@@ -29,8 +29,8 @@ export default {
             interamente versato.
           </p>
         </div>
-        <div class="container-right text-start">
-          <h2>Healthcare of the future, today, for everyone.</h2>
+        <div class="container-right text-start col-12 col-lg-8">
+          <h4>Healthcare of the future, today, for everyone.</h4>
           <hr class="hr" />
           <div class="d-flex flex-column flex-md-row">
             <ul>
@@ -60,8 +60,7 @@ export default {
           </div>
         </div>
       </div>
-      <div
-        class="socials d-flex pt-5 justify-content-center justify-content-md-end">
+      <div class="socials d-flex pt-5 justify-content-center justify-content-md-end">
         <div><i class="fa-brands fa-instagram"></i></div>
         <div><i class="fa-brands fa-square-twitter"></i></div>
         <div><i class="fa-brands fa-facebook"></i></div>
@@ -73,23 +72,13 @@ export default {
 
 <style lang="scss" scoped>
 @use "../styles/general.scss" as *;
+
 footer {
   background-color: #1f254c;
   color: aliceblue;
 }
 
-.left-container {
-  width: 20%;
-  // padding-right: 1rem;
-  // margin-right: 4rem;
-}
-.container-right {
-  width: 80%;
-}
 
-.hr {
-  margin-top: 2.2rem;
-}
 li {
   list-style: none;
 }

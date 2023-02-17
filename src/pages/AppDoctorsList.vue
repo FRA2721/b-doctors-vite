@@ -84,9 +84,9 @@ export default {
             </div>
         </div>
 
-        <h2 class="text-center my-5 our-doctors">Doctors</h2>
+        <h2 class="text-center my-5 our-doctors pb-5">Doctors</h2>
 
-        <div class="row justify-content-center g-5 pb-5">
+        <div class="row justify-content-center g-5 pb-5 bg-light">
 
             <div class="col-12 col-md-6 col-lg-4 col-card" v-for="(doctor) in this.doctors" :key="doctor.id">
                 <AppCardVue :doctor="doctor" />

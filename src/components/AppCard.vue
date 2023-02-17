@@ -58,11 +58,11 @@ export default {
 
 <style lang="scss" scoped>
 .col-card {
-    height: 100% !important;
+    height: 100%
 }
 
 .card {
-    height: 100% !important;
+    height: 100%;
     transition: 0.2s;
 
     .card_img {
