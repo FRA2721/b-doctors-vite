@@ -13,8 +13,6 @@ export default {
 <!-- template section -->
 <template>
 
-  <h2>services</h2>
-
 </template>
 
 
