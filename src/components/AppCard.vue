@@ -9,6 +9,11 @@ export default {
         return {
             baseUrl: 'http://127.0.0.1:8000',
         }
+    },
+    computed: {
+        getStar() {
+            return Math.ceil(this.doctor.feedback_avg_vote)
+        }
     }
 
 }
@@ -25,23 +30,26 @@ export default {
         <div v-else class="card_img">
             <img src="../assets/imgs/4025200.png" alt="">
         </div>
-        <div class="card-body">
+        <div class="card-body text-center">
             <div class="name-email d-flex justify-content-between flex-column flex-sm-row flex-md-column">
-                <h5 class="card-title">{{ doctor.name }} {{ doctor.surname }}
+                <h5 class="">{{ doctor.name }} {{ doctor.surname }}
                 </h5>
-                <span class="doctor-email">{{
+                <span class="doctor-email mb-2"> <i class="fa-solid fa-envelope"></i> {{
                     doctor.email
                 }}</span>
             </div>
-            <p class="">Phone number: {{ doctor.user_detail.phone }}</p>
+            <p class=""> <i class="fa-solid fa-phone"></i> {{ doctor.user_detail.phone }}</p>
             <p>
-                <span class="card-body-title d-block">Specializations:</span>
-                <span class="me-1" v-for="spec in doctor.specializations">#{{ spec.title }}</span>
+                <span class="me-1 d-block d-md-inline-block" v-for="spec in doctor.specializations"> <i
+                        class="fa-solid fa-hashtag"></i> {{
+                            spec.title }}</span>
             </p>
 
             <p>{{ doctor.user_detail.performance }}</p>
 
-            <p> <span class="card-body-title">Average vote:</span> {{ doctor.feedback_avg_vote / 1 }}</p>
+            <p>
+                <i v-for="n in 5" :class="n <= getStar ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
+            </p>
             <router-link :to="{ path: `doctorslist/${doctor.slug}` }" class="btn btn-primary">Details</router-link>
         </div>
     </div>
@@ -55,10 +63,12 @@ export default {
 
 .card {
     height: 100% !important;
+    transition: 0.2s;
 
     .card_img {
         width: 100%;
         height: 20rem;
+
 
         img {
             width: 100%;
@@ -72,6 +82,11 @@ export default {
         .card-body-title {
             text-decoration: underline;
         }
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 10px 5px 5px lightgray;
     }
 }
 
