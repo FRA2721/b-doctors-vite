@@ -3,6 +3,7 @@
 import { store } from "../store";
 import axios from 'axios';
 import AppDoctorDetails from "./AppDoctorDetails.vue";
+import AppCardVue from "../components/AppCard.vue";
 export default {
 
     name: "AppDoctorList",
@@ -17,7 +18,7 @@ export default {
             specializations: []
         }
     },
-    components: { AppDoctorDetails },
+    components: { AppDoctorDetails, AppCardVue },
     created() {
         this.getDoctors();
     },
@@ -44,8 +45,6 @@ export default {
 
 <!-- template section -->
 <template>
-
-
     <div class="container mt-2">
 
         <div class="searchbar mt-3 row align-items-center">
@@ -89,98 +88,100 @@ export default {
         <div class="row justify-content-center g-4 pb-5">
 
             <div class="col-12 col-md-6 col-lg-4 col-card" v-for="(doctor) in this.doctors" :key="doctor.id">
-
-                <div class="card">
-                    <div v-if="doctor.user_detail.photo" class="card_img">
-                        <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
-                    </div>
-                    <div v-else class="card_img">
-                        <img src="../assets/imgs/4025200.png" alt="">
-                    </div>
-                    <div class="card-body">
-                        <div class="name-email d-flex justify-content-between flex-column flex-sm-row flex-md-column">
-                            <h5 class="card-title">{{ doctor.name }} {{ doctor.surname }}
-                            </h5>
-                            <span class="doctor-email">{{
-                                doctor.email
-                            }}</span>
-                        </div>
-                        <p class="">Phone number: {{ doctor.user_detail.phone }}</p>
-                        <p>
-                            <span class="card-body-title d-block">Specializations:</span>
-                            <span class="me-1" v-for="spec in doctor.specializations">#{{ spec.title }}</span>
-                        </p>
-
-                        <p>{{ doctor.user_detail.performance }}</p>
-
-                        <p> <span class="card-body-title">Average vote:</span> {{ doctor.feedback_avg_vote / 1 }}</p>
-                        <router-link :to="{ path: `doctorslist/${doctor.slug}`, params: { doctor: doctor } }"
-                            class="btn btn-send">Details</router-link>
-                    </div>
-                </div>
-
+                <AppCardVue :doctor="doctor" />
             </div>
+
+            <!-- <div class="col-12 col-md-6 col-lg-4 col-card" v-for="(doctor) in this.doctors" :key="doctor.id">
+
+                                                        <div class="card">
+                                                            <div v-if="doctor.user_detail.photo" class="card_img">
+                                                                <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
+                                                            </div>
+                                                            <div v-else class="card_img">
+                                                                <img src="../assets/imgs/4025200.png" alt="">
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="name-email d-flex justify-content-between flex-column flex-sm-row flex-md-column">
+                                                                    <h5 class="card-title">{{ doctor.name }} {{ doctor.surname }}
+                                                                    </h5>
+                                                                    <span class="doctor-email">{{
+                                                                        doctor.email
+                                                                    }}</span>
+                                                                </div>
+                                                                <p class="">Phone number: {{ doctor.user_detail.phone }}</p>
+                                                                <p>
+                                                                    <span class="card-body-title d-block">Specializations:</span>
+                                                                    <span class="me-1" v-for="spec in doctor.specializations">#{{ spec.title }}</span>
+                                                                </p>
+
+                                                                <p>{{ doctor.user_detail.performance }}</p>
+
+                                                                <p> <span class="card-body-title">Average vote:</span> {{ doctor.feedback_avg_vote / 1 }}</p>
+                                                                <router-link :to="{ path: `doctorslist/${doctor.slug}`, params: { doctor: doctor } }"
+                                                                    class="btn btn-primary">Details</router-link>
+                                                            </div>
+                                                        </div>
+
+                                                    </div> -->
         </div>
 
         <div class="mt-5" v-if="doctors.length <= 0">
             <h2 class="text-center">No Doctors matched :( </h2>
         </div>
     </div>
-
-
 </template>
 
 <!-- style section -->
 <style lang="scss">
-.col-card {
-    height: 100% !important;
-}
+// .col-card {
+//     height: 100% !important;
+// }
 
-.card {
-    min-width: 300px;
-    height: 100% !important;
+// .card {
+//     min-width: 300px;
+//     height: 100% !important;
 
-    .card_img {
-        width: 100%;
-        height: 20rem;
+//     .card_img {
+//         width: 100%;
+//         height: 20rem;
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-        }
-    }
+//         img {
+//             width: 100%;
+//             height: 100%;
+//             object-fit: cover;
+//             object-position: top;
+//         }
+//     }
 
-    .card-body {
-        .card-body-title {
-            text-decoration: underline;
-        }
-    }
-}
+//     .card-body {
+//         .card-body-title {
+//             text-decoration: underline;
+//         }
+//     }
+// }
 
-.our-doctors {
+// .our-doctors {
 
-    color: #20254c;
+//     color: #20254c;
 
-    &::before {
-        content: "";
-        display: inline-block;
-        width: 10%;
-        height: 3px;
-        background-color: #20254c9e;
-        margin-right: 10px;
-        vertical-align: middle;
-    }
+//     &::before {
+//         content: "";
+//         display: inline-block;
+//         width: 10%;
+//         height: 3px;
+//         background-color: #20254c9e;
+//         margin-right: 10px;
+//         vertical-align: middle;
+//     }
 
-    &::after {
-        content: "";
-        display: inline-block;
-        width: 10%;
-        height: 3px;
-        background-color: #20254c9e;
-        margin-left: 10px;
-        vertical-align: middle;
-    }
-}
+//     &::after {
+//         content: "";
+//         display: inline-block;
+//         width: 10%;
+//         height: 3px;
+//         background-color: #20254c9e;
+//         margin-left: 10px;
+//         vertical-align: middle;
+//     }
+// }
 </style>

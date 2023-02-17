@@ -16,7 +16,7 @@ const router = createRouter({
             name: 'home',
             component: AppHome,
             meta: {
-                title: 'Home'
+                title: 'BDoctors - Home'
             }
         },
 
@@ -25,7 +25,7 @@ const router = createRouter({
             name: "about-us",
             component: AppAboutUs,
             meta: {
-                title: 'About Us',
+                title: 'BDoctors - About Us',
             }
         },
 
@@ -34,7 +34,7 @@ const router = createRouter({
             name: "services",
             component: AppServices,
             meta: {
-                title: 'Our Servicer',
+                title: 'BDoctors - Our Servicer',
             }
         },
 
@@ -43,7 +43,7 @@ const router = createRouter({
             name: "contact",
             component: AppContact,
             meta: {
-                title: 'Our Contacts',
+                title: 'BDoctors - Our Contacts',
             }
         },
         {
@@ -51,7 +51,7 @@ const router = createRouter({
             name: "doctorslist",
             component: AppDoctorsList,
             meta: {
-                title: 'Doctors',
+                title: 'BDoctors - Doctors',
             }
         },
         {
@@ -60,7 +60,7 @@ const router = createRouter({
             props: true,
             component: AppDoctorDetails,
             meta: {
-                title: 'DoctorDetails',
+                title: 'BDoctors - DoctorDetails',
             }
         },
 
