@@ -46,9 +46,9 @@ export default {
 <!-- template section -->
 <template>
     <div class="container">
-        <h1>Our services</h1>
+        <h1 class="mb-5 mt-3">Our services</h1>
 
-        <div class="row">
+        <div class="row g-4 pb-4">
             <div class="container-spec col-12 col-md-4" v-for="spec in store.specializations" :key="spec.id">
                 <h6 class="title-spec">
                     {{ spec.title }}
