@@ -33,7 +33,7 @@ export default {
           <h4>Healthcare of the future, today, for everyone.</h4>
           <hr class="hr" />
           <div class="row g-3">
-            <ul class="col-6 col-md-12">
+            <ul class="col-6 col-md-3">
               <h5 class="text-muted">Careers</h5>
               <li>Work with us</li>
               <li>Open positions</li>
@@ -41,21 +41,21 @@ export default {
               <li>Company intranet</li>
             </ul>
 
-            <ul class="col-6 col-md-12">
+            <ul class="col-6 col-md-3">
               <h5 class="text-muted">Contacts</h5>
               <li>Work and contacts</li>
               <li>Contacts B Doctors</li>
               <li>Applications open</li>
             </ul>
 
-            <ul class="col-6 col-md-12">
+            <ul class="col-6 col-md-3">
               <h5 class="text-muted">Legal Information</h5>
               <li>Coockie Policy</li>
               <li>Privacy Policy</li>
               <li>Transparency</li>
             </ul>
 
-            <ul class="col-6 col-md-12">
+            <ul class="col-6 col-md-3">
               <h5 class="text-muted">Other Informations</h5>
               <li>Ethics Committee</li>
               <li>Cookie settings</li>
