@@ -13,6 +13,9 @@ export default {
             doctors: [],
             loading: true,
             store,
+            docSearch: this.$route.query.spec,
+            voto: this.$route.query.vote,
+            feedback_num: this.$route.query.feedback,
             counter: 0,
             total: 0,
             specializations: []
@@ -24,11 +27,12 @@ export default {
     },
     methods: {
         getDoctors() {
+            this.$router.replace({ query: {vote: this.voto, spec: this.docSearch, fdback: this.feedback_num} })
             axios.get(`${this.baseUrl}/api/profiles`, {
                 params: {
-                    ...this.store.docSearch && { specialization_id: this.store.docSearch },
-                    ...this.store.voto && { vote: this.store.voto },
-                    ...this.store.feedback_num && { feedback_num: this.store.feedback_num }
+                    ...this.docSearch && { specialization_slug: this.docSearch },
+                    ...this.voto && { vote: this.voto },
+                    ...this.feedback_num && { feedback_num: this.feedback_num }
                 }
             }).then(resp => {
                 this.doctors = resp.data.results.user;
@@ -50,17 +54,17 @@ export default {
 
         <div class="searchbar mt-3 row align-items-center">
             <div class="col-12 col-lg-6">
-                <select class="form-select mb-2" @change="getDoctors()" v-model="store.docSearch" placeholder="test">
+                <select class="form-select mb-2" @change="getDoctors()" v-model="docSearch" placeholder="test">
                     <option value="">choose a specialization</option>
-                    <option v-for=" spec in store.specializations" :value="spec.id"> {{ spec.title }}</option>
+                    <option v-for=" spec in store.specializations" :value="spec.slug"> {{ spec.title }}</option>
                 </select>
             </div>
 
             <div class="col-12 col-lg-3">
                 <label for="voto">Average vote</label>
 
-                <select class="ms-1" name="voto" id="voto" v-model="this.store.voto" @change="getDoctors()">
-                    <option value="0">0</option>
+                <select class="ms-1" name="voto" id="voto" v-model="this.voto" @change="getDoctors()">
+                    <option value="">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -72,9 +76,9 @@ export default {
             <div class="col-12 col-lg-3">
 
                 <label for="number_of_feedback">Number of Feedback</label>
-                <select class="ms-1" name="number_of_feedback" id="number_of_feedback" v-model="this.store.feedback_num"
+                <select class="ms-1" name="number_of_feedback" id="number_of_feedback" v-model="this.feedback_num"
                     @change="getDoctors()">
-                    <option value="0">0</option>
+                    <option value="">0</option>
                     <option value="5">>5</option>
                     <option value="10">>10</option>
                     <option value="15">>15</option>

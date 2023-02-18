@@ -13,6 +13,7 @@ export default {
     return {
       store,
       label: "Search",
+      docSearch: '',
       routeName: "doctorslist",
       baseUrl: "http://127.0.0.1:8000",
       doctors: [],
@@ -29,8 +30,8 @@ export default {
       this.loading = true;
       axios.get(`${this.baseUrl}/api/profiles`, {
         params: {
-          ...(this.store.docSearch && {
-            specialization_id: this.store.docSearch,
+          ...(this.docSearch && {
+            specialization_id: this.docSearch,
           }),
         },
       }).then((resp) => {
@@ -38,8 +39,8 @@ export default {
         this.store.specializations = resp.data.results.specializations;
         console.log(this.doctors);
         this.loading = false;
-        if (this.store.docSearch) {
-          this.$router.push({ name: "doctorslist" });
+        if (this.docSearch) {
+          this.$router.push({ name: "doctorslist", query: { spec: this.docSearch } });
         }
         this.loading = false
       });
@@ -56,9 +57,9 @@ export default {
     <div class="container pt-3">
       <div class="row">
         <div class="searchbar m-auto mt-3 col-12 col-md-8 col-lg-6">
-          <select class="form-select" @change="getDoctors" v-model="store.docSearch" placeholder="test">
+          <select class="form-select" @change="getDoctors" v-model="docSearch" placeholder="test">
             <option value="">Choose a specialization</option>
-            <option v-for="spec in store.specializations" :value="spec.id" :key="spec.id">
+            <option v-for="spec in store.specializations" :value="spec.slug" :key="spec.id">
               {{ spec.title }}
             </option>
           </select>

@@ -38,11 +38,6 @@ export default {
     RouterLink,
     AppJumbotron,
   },
-  methods: {
-    cleanInput() {
-      this.store.docSearch = "";
-    },
-  },
 };
 </script>
 
@@ -79,7 +74,6 @@ export default {
             id="navbarNav">
             <div class="navbar-nav links text-secondary">
               <router-link
-                @click="cleanInput"
                 :to="{ name: item.routeName }"
                 class="nav-link justify-content-end"
                 v-for="(item, index) in links"
