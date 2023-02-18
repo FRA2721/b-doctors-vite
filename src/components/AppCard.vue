@@ -12,7 +12,8 @@ export default {
     },
     computed: {
         getStar() {
-            return Math.ceil(this.doctor.feedback_avg_vote)
+
+            return Math.floor(this.doctor.feedback_avg_vote)
         }
     }
 
@@ -50,7 +51,7 @@ export default {
             <p>
                 <i v-for="n in 5" :class="n <= getStar ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
             </p>
-            <router-link :to="{ path: `doctorslist/${doctor.slug}` }" class="btn">Details</router-link>
+            <router-link :to="{ path: `doctorslist/${doctor.slug}` }" class="btn btn-primary">Details</router-link>
         </div>
     </div>
 </template>
@@ -114,5 +115,4 @@ export default {
         vertical-align: middle;
     }
 }
-
 </style>

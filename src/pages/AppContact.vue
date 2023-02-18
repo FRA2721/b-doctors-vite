@@ -2,7 +2,7 @@
 <script>
 export default {
   // name
-  name: "AppAboutUs",
+  name: "AppContact",
 }
 
 </script>
