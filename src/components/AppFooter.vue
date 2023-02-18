@@ -18,15 +18,16 @@ export default {
 <template>
   <footer>
     <div class="container pt-5 pb-5">
-      <div class="d-flex flex-column flex-md-row g-4 row justify-content-around">
+      <div
+        class="d-flex flex-column flex-md-row g-4 row justify-content-around">
         <div class="left-container col-12 col-lg-4">
           <a href="/">
             <img class="logo" src="../assets/imgs/logo-4.png" alt="logo" />
           </a>
-          <span>B Doctors</span>
+          <span>BD Doctors</span>
           <h6>
-            2300 - 1633 <span class="addres">New York Street</span> <br>
-            New York - United States of America <br>
+            2300 - 1633 <span class="addres">New York Street</span> <br />
+            New York - United States of America <br />
             Box-Office: (800)-534-0258
           </h6>
         </div>
@@ -36,100 +37,75 @@ export default {
             <ul class="col-6 col-md-3">
               <h5 class="text-muted">Careers</h5>
               <li>
-                <a href="">
-                  &SmallCircle; Work with us
-                </a>
+                <a href=""> &SmallCircle; Work with us </a>
               </li>
 
               <li>
-                <a href="">
-                  &SmallCircle; Open positions
-                </a>
+                <a href=""> &SmallCircle; Open positions </a>
               </li>
 
               <li>
-                <a href="">
-                  &SmallCircle; Applications open
-                </a>
+                <a href=""> &SmallCircle; Applications open </a>
               </li>
 
               <li>
-                <a href="">
-                  &SmallCircle; Company intranet
-                </a>
+                <a href=""> &SmallCircle; Company intranet </a>
               </li>
             </ul>
 
             <ul class="col-6 col-md-3">
               <h5 class="text-muted">Contacts</h5>
               <li>
-                <a href="">
-                  &SmallCircle; Work and contacts
-                </a>
+                <a href=""> &SmallCircle; Work and contacts </a>
               </li>
 
               <li>
-                <a href="">
-                  &SmallCircle; Contacts B Doctors
-                </a>
+                <a href=""> &SmallCircle; Contacts BD Doctors </a>
               </li>
 
               <li>
-                <a href="">
-                  &SmallCircle; Applications open
-                </a>
+                <a href=""> &SmallCircle; Applications open </a>
               </li>
             </ul>
 
             <ul class="col-6 col-md-3">
               <h5 class="text-muted">Legal Information</h5>
               <li>
-                <a href="">
-                  &SmallCircle; Coockie Policy
-                </a>
+                <a href=""> &SmallCircle; Coockie Policy </a>
               </li>
 
               <li>
-                <a href="">
-                  &SmallCircle; Privacy Policy
-                </a>
+                <a href=""> &SmallCircle; Privacy Policy </a>
               </li>
 
               <li>
-                <a href="">
-                  &SmallCircle; Transparency
-                </a>
+                <a href=""> &SmallCircle; Transparency </a>
               </li>
             </ul>
 
             <ul class="col-6 col-md-3">
               <h5 class="text-muted">Other Informations</h5>
               <li>
-                <a href="">
-                  &SmallCircle; Ethics Committee
-                </a>
+                <a href=""> &SmallCircle; Ethics Committee </a>
               </li>
-              
+
               <li>
-                <a href="">
-                  &SmallCircle; Cookie settings
-                </a>
+                <a href=""> &SmallCircle; Cookie settings </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="socials d-flex pt-5 justify-content-center justify-content-md-end">
+      <div
+        class="socials d-flex pt-5 justify-content-center justify-content-md-end">
         <div><i class="fa-brands fa-instagram"></i></div>
         <div><i class="fa-brands fa-square-twitter"></i></div>
         <div><i class="fa-brands fa-facebook"></i></div>
         <div><i class="fa-brands fa-linkedin"></i></div>
       </div>
-      <hr>
+      <hr />
       <div class="d-flex justify-content-center">
-        <p>
-          &#169; <span class="date">2023</span> Copyright: BDoctors.com 
-        </p>
+        <p>&#169; <span class="date">2023</span> Copyright: BD Doctors.com</p>
       </div>
     </div>
   </footer>
@@ -138,23 +114,23 @@ export default {
 <style lang="scss" scoped>
 @use "../styles/general.scss" as *;
 
-img{
+img {
   margin-left: -20px;
   width: 30%;
 }
 
 footer {
   background-color: #1f254c;
-  color:white;
+  color: white;
   border-top: 3px solid grey;
   margin-top: 1rem;
 }
 
-.addres{
+.addres {
   color: grey;
 }
 
-.links{
+.links {
   border-left: 1px solid grey;
 }
 
@@ -167,17 +143,16 @@ ul {
   margin: 0;
 }
 
-a{
+a {
   color: white;
-  transition: .15s;
+  transition: 0.15s;
 }
 .fa-brands {
   margin-left: 1rem;
   cursor: pointer;
 }
 
-.date{
+.date {
   color: grey;
 }
-
 </style>
