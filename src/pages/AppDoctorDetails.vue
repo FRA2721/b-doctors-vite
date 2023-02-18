@@ -100,7 +100,7 @@ export default {
     <div class="container">
         <h1 class="mt-3 mb-3 text-center">{{ doctor.name }} {{ doctor.surname }}</h1>
 
-        <div class="profile d-flex justify-content-center">
+        <div class="profile d-flex justify-content-center pt-2 pb-3">
             <div class="profile-container d-flex flex-column flex-md-row align-items-center justify-content-around col-9">
                 <div class="img-container">
 
@@ -109,7 +109,7 @@ export default {
                     <img v-else class="" src="../assets/imgs/4025200.png" alt="">
 
                 </div>
-                <div class="info-container">
+                <div class="info-container mt-3">
                     <div class="text-center text-md-start">
                         <div class="">
                             <h5 class="">{{ doctor.name }} {{ doctor.surname }}
@@ -127,9 +127,20 @@ export default {
 
                         <p>{{ doctor.user_detail.performance }}</p>
 
+                        <p> <i class="fa-solid fa-house"></i> {{ doctor.user_detail.address }}</p>
+
                     </div>
                 </div>
             </div>
+
+        </div>
+
+
+        <div class="description-container row justify-content-center">
+            <div class="col-12 col-md-8 doctor-description">
+                {{ doctor.user_detail.description }}
+            </div>
+
         </div>
 
 
@@ -223,10 +234,19 @@ export default {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: top;
+        border-radius: 10%;
     }
 }
 
 .profile-img {
     height: 1rem;
+}
+
+.doctor-description {
+    background-color: #d5eaf2;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 </style>
