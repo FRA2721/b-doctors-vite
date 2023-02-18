@@ -69,7 +69,7 @@ export default {
         <div class="evidenza">
           <h2 class="text-center our-doctors">Our Doctors</h2>
           <div class="row pt-5 g-5">
-            <div v-if="loading"> loading</div>
+            <div v-if="loading">Wait a minute</div>
             <div v-else v-for="doctor in this.doctors" class="col-12 col-md-6 col-lg-4 mb-5" :key="doctor.id">
 
               <AppCard :doctor="doctor" />

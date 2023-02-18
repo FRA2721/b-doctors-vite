@@ -50,7 +50,7 @@ export default {
             <p>
                 <i v-for="n in 5" :class="n <= getStar ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
             </p>
-            <router-link :to="{ path: `doctorslist/${doctor.slug}` }" class="btn btn-primary">Details</router-link>
+            <router-link :to="{ path: `doctorslist/${doctor.slug}` }" class="btn">Details</router-link>
         </div>
     </div>
 </template>
@@ -85,7 +85,7 @@ export default {
     }
 
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
         box-shadow: 10px 5px 5px lightgray;
     }
 }
@@ -114,4 +114,5 @@ export default {
         vertical-align: middle;
     }
 }
+
 </style>
