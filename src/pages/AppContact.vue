@@ -9,9 +9,10 @@ export default {
 <!-- template section -->
 <template>
   <div class="container">
-    <h1 class="text-center mt-3 mb-4">BD Doctors Contacts</h1>
+    <h1 class="text-center mt-3 mb-5">BD Doctors Contacts</h1>
 
-    <div class="details row text-center text-sm-start align-items-stretch mb-2">
+    <div
+      class="details row text-center text-sm-start align-items-stretch pt-5 mb-5">
       <div class="title col col-12 col-md-3">
         <h2>Contacts</h2>
       </div>
@@ -30,9 +31,10 @@ export default {
       </div>
     </div>
 
-    <div class="details row text-center text-sm-start align-items-stretch mb-2">
+    <div
+      class="details row text-center text-sm-start align-items-stretch pt-5 mb-5">
       <div class="title col col-12 col-md-3">
-        <h2>Structure detail</h2>
+        <h2>Structure details</h2>
       </div>
       <div class="address col col-12 col-md-3">
         Address:
@@ -57,8 +59,31 @@ export default {
 </template>
 
 <!-- style section -->
-<style lang="scss">
+<style lang="scss" scoped>
 @use "../styles/general.scss" as *;
+
+h1 {
+  color: #20254c;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 10%;
+    height: 3px;
+    background-color: #20254c9e;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 10%;
+    height: 3px;
+    background-color: #20254c9e;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+}
 
 .col {
   border-left: 1px solid black;
