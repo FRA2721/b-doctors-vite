@@ -62,6 +62,10 @@ export default {
 <style lang="scss" scoped>
 @use "../styles/general.scss" as *;
 
+.container {
+  min-height: calc(100vh - 56px);
+}
+
 h1 {
   color: #20254c;
   &::before {

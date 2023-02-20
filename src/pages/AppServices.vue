@@ -68,8 +68,12 @@ export default {
 </template>
 
 <!-- style section -->
-<style lang="scss">
+<style lang="scss" scoped>
 @use "../styles/general.scss" as *;
+
+.container {
+  min-height: calc(100vh - 56px);
+}
 
 .our-services {
   color: #20254c;

@@ -1,18 +1,17 @@
 <script>
-
 export default {
-    name: 'AppNotFound'
-}
-
-
+  name: "AppNotFound",
+};
 </script>
 
 <template>
-
-    <h2>Ciao sono NOT FOUND</h2>
-
+  <div class="container d-flex justify-content-center align-items-center">
+    <h2 class="text-center">Ciao sono NOT FOUND</h2>
+  </div>
 </template>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+.container {
+  min-height: calc(100vh - 56px);
+}
 </style>
