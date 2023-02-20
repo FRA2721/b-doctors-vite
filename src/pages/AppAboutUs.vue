@@ -55,10 +55,7 @@ export default {
     <div class="row g-4 mb-5">
       <div class="col-12 col-md-4">
         <div class="card">
-          <img
-            src="../assets/imgs/img-cure.png"
-            class="card-img-top"
-            alt="..." />
+          <img src="../assets/imgs/img-cure.png" class="card-img-top" alt="..." />
           <div class="card-body">
             <h3 class="mb-4 mt-5 text-center color-title">
               State-of-the-Art Care
@@ -74,10 +71,7 @@ export default {
       </div>
       <div class="col-12 col-md-4">
         <div class="card">
-          <img
-            src="../assets/imgs/img-alta-tecnologia.png"
-            class="card-img-top"
-            alt="..." />
+          <img src="../assets/imgs/img-alta-tecnologia.png" class="card-img-top" alt="..." />
           <div class="card-body">
             <h3 class="mb-4 mt-5 text-center color-title">High Technology</h3>
             <p class="card-text text-center">
@@ -90,10 +84,7 @@ export default {
       </div>
       <div class="col-12 col-md-4">
         <div class="card">
-          <img
-            src="../assets/imgs/img-appproccio.png"
-            class="card-img-top"
-            alt="..." />
+          <img src="../assets/imgs/img-appproccio.png" class="card-img-top" alt="..." />
           <div class="card-body">
             <h3 class="mb-4 mt-5 text-center color-title">Multi Approach</h3>
             <p class="card-text text-center pb-">
@@ -115,6 +106,12 @@ export default {
 .jumbo-about {
   width: 100%;
   opacity: 0.4;
+
+
+  @media screen and (min-width: 768px) {
+    min-height: calc(100vh - 56px);
+  }
+
   max-height: 50rem;
 
   img {
@@ -171,14 +168,16 @@ export default {
 
 .card {
 
-  transition: transform 0.2s;
+  transition: 0.2s;
 
   &:hover {
     transform: scale(1.05);
     box-shadow: 10px 5px 5px lightgray;
   }
+
   .card-img-top {
     height: 10rem;
+    object-fit: cover;
   }
 }
 </style>

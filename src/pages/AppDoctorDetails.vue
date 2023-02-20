@@ -90,18 +90,13 @@ export default {
 <!-- template section -->
 <template>
   <div class="container">
-    <h1 class="mt-3 mb-3 text-center">
-      {{ doctor.name }} {{ doctor.surname }}
-    </h1>
 
-    <div class="profile d-flex justify-content-center pt-2 pb-3">
+
+    <div class="profile d-flex justify-content-center pt-5 pb-3">
       <div
-        class="profile-container d-flex flex-column flex-md-row align-items-center justify-content-around col-9">
+        class="profile-container d-flex flex-column flex-md-row align-items-center justify-content-around col-11 col-md-9">
         <div class="img-container">
-          <img
-            class="profile-img"
-            v-if="doctor.user_detail.photo"
-            :src="`${baseUrl}/storage/${doctor.user_detail.photo}`"
+          <img class="profile-img" v-if="doctor.user_detail.photo" :src="`${baseUrl}/storage/${doctor.user_detail.photo}`"
             alt="" />
           <img v-else class="" src="../assets/imgs/4025200.png" alt="" />
         </div>
@@ -110,19 +105,10 @@ export default {
             <div class="">
               <h5 class="">{{ doctor.name }} {{ doctor.surname }}</h5>
               <span class="doctor-email mb-2">
-                <i class="fa-solid fa-envelope"></i> {{ doctor.email }}</span
-              >
+                <i class="fa-solid fa-envelope"></i> {{ doctor.email }}</span>
             </div>
             <p class="">
               <i class="fa-solid fa-phone"></i> {{ doctor.user_detail.phone }}
-            </p>
-            <p>
-              <span
-                class="me-1 d-block d-md-inline-block"
-                v-for="spec in doctor.specializations"
-                :key="spec.id">
-                <i class="fa-solid fa-hashtag"></i> {{ spec.title }}</span
-              >
             </p>
 
             <p>{{ doctor.user_detail.performance }}</p>
@@ -135,13 +121,20 @@ export default {
       </div>
     </div>
 
+    <div class="spec-container row justify-content-center mb-3">
+      <div class="spec col-11 col-md-9 d-flex justify-content-center pt-2 pb-2">
+        <span class="me-3" v-for="spec in doctor.specializations" :key="spec.id">
+          <i class="fa-solid fa-hashtag"></i> {{ spec.title }}</span>
+      </div>
+    </div>
+
     <div class="description-container row justify-content-center">
-      <div class="col-12 col-md-8 doctor-description">
+      <div class="col-11 col-md-9 doctor-description">
         {{ doctor.user_detail.description }}
       </div>
     </div>
 
-    <div class="row g-3 justify-content-center mt-5">
+    <div class="row g-3 justify-content-center mt-3">
       <div class="col-12 col-lg-9">
         <div class="border rounded p-4">
           <h2>Message</h2>
@@ -152,37 +145,19 @@ export default {
           <form @submit.prevent="sendMessage()">
             <div>
               <label class="form-label" for="name">Name:</label>
-              <input
-                class="form-control mb-3"
-                required
-                id="name"
-                name="name"
-                v-model="name"
-                type="text"
+              <input class="form-control mb-3" required id="name" name="name" v-model="name" type="text"
                 placeholder="Enter your name" />
             </div>
 
             <div>
               <label class="form-label" for="email">Email:</label>
-              <input
-                class="form-control mb-3"
-                required
-                id="email"
-                name="email"
-                v-model="email"
-                type="email"
+              <input class="form-control mb-3" required id="email" name="email" v-model="email" type="email"
                 placeholder="Enter your email" />
             </div>
 
             <div>
               <label class="form-label" for="text">Message:</label>
-              <textarea
-                required
-                class="form-control mb-3"
-                name="text"
-                id="text"
-                cols="30"
-                v-model="text"
+              <textarea required class="form-control mb-3" name="text" id="text" cols="30" v-model="text"
                 placeholder="Write your message"></textarea>
             </div>
 
@@ -203,24 +178,13 @@ export default {
           <form @submit.prevent="sendFeedback()">
             <div>
               <label class="form-label" for="reviewer_name">Name:</label>
-              <input
-                class="form-control mb-3"
-                required
-                id="reviewer_name"
-                name="reviewer_name"
-                v-model="reviewer"
-                type="text"
-                placeholder="Enter your name" />
+              <input class="form-control mb-3" required id="reviewer_name" name="reviewer_name" v-model="reviewer"
+                type="text" placeholder="Enter your name" />
             </div>
 
             <div>
               <label for="vote">Vote:</label>
-              <select
-                required
-                class="form-select mb-3"
-                v-model="vote"
-                name="vote"
-                id="vote">
+              <select required class="form-select mb-3" v-model="vote" name="vote" id="vote">
                 <option value="0">Very bad</option>
                 <option value="1">Bad</option>
                 <option value="2">Not bad</option>
@@ -232,13 +196,7 @@ export default {
 
             <div>
               <label for="review">Review:</label>
-              <textarea
-                required
-                class="form-control mb-3"
-                v-model="review"
-                name="review"
-                id="review"
-                cols="30"
+              <textarea required class="form-control mb-3" v-model="review" name="review" id="review" cols="30"
                 placeholder="Enter your review"></textarea>
             </div>
 
@@ -267,15 +225,43 @@ export default {
   }
 }
 
+.profile-container {
+  background-color: #d5eaf2;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 15px;
+}
+
 .profile-img {
   height: 1rem;
 }
 
 .doctor-description {
   background-color: #d5eaf2;
-  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   border-radius: 10px;
   margin-bottom: 1rem;
-  width: 73%;
+
+}
+
+.description-container {
+  width: 100%;
+}
+
+.row {
+  margin-left: 0;
+}
+
+.spec-container {
+
+  width: 100%;
+
+  .spec {
+    background-color: #d5eaf2;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.1rem;
+  }
 }
 </style>

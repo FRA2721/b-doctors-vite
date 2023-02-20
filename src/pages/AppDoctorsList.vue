@@ -57,16 +57,9 @@ export default {
   <div class="container mt-2">
     <div class="searchbar mt-3 row align-items-center">
       <div class="col-12 col-lg-6">
-        <select
-          class="form-select mb-2"
-          @change="getDoctors()"
-          v-model="docSearch"
-          placeholder="test">
+        <select class="form-select mb-2" @change="getDoctors()" v-model="docSearch" placeholder="test">
           <option value="">choose a specialization</option>
-          <option
-            v-for="spec in store.specializations"
-            :value="spec.slug"
-            :key="spec.id">
+          <option v-for="spec in store.specializations" :value="spec.slug" :key="spec.id">
             {{ spec.title }}
           </option>
         </select>
@@ -75,12 +68,7 @@ export default {
       <div class="col-12 col-lg-3 text-center">
         <label for="voto">Average vote</label>
 
-        <select
-          class="ms-1"
-          name="voto"
-          id="voto"
-          v-model="this.voto"
-          @change="getDoctors()">
+        <select class="ms-1" name="voto" id="voto" v-model="this.voto" @change="getDoctors()">
           <option value="">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -92,11 +80,7 @@ export default {
 
       <div class="col-12 col-lg-3">
         <label for="number_of_feedback">Number of Feedback</label>
-        <select
-          class="ms-1"
-          name="number_of_feedback"
-          id="number_of_feedback"
-          v-model="this.feedback_num"
+        <select class="ms-1" name="number_of_feedback" id="number_of_feedback" v-model="this.feedback_num"
           @change="getDoctors()">
           <option value="">0</option>
           <option value="5">>5</option>
@@ -112,21 +96,18 @@ export default {
 
     <div class="row justify-content-center g-5 pb-5 bg-light">
       <div v-if="loading">
-        <h2>loading</h2>
+        <h2 class="text-center">Loading...</h2>
       </div>
 
-      <div
-        v-else
-        class="col-12 col-md-6 col-lg-4 col-card"
-        v-for="doctor in this.doctors"
-        :key="doctor.id">
+      <div v-else class="col-12 col-md-6 col-lg-4 col-card" v-for="doctor in this.doctors" :key="doctor.id">
         <AppCardVue :doctor="doctor" />
       </div>
+      <div class="mt-5" v-if="!loading && doctors.length <= 0">
+        <h2 class="text-center">No Doctors matched :(</h2>
+      </div>
     </div>
 
-    <div class="mt-5" v-if="!loading && doctors.length <= 0">
-      <h2 class="text-center">No Doctors matched :(</h2>
-    </div>
+
   </div>
 </template>
 
@@ -134,6 +115,7 @@ export default {
 <style lang="scss" scoped>
 .our-doctors {
   color: #20254c;
+
   &::before {
     content: "";
     display: inline-block;
@@ -154,6 +136,7 @@ export default {
     vertical-align: middle;
   }
 }
+
 .container {
   min-height: calc(100vh - 56px);
 }
