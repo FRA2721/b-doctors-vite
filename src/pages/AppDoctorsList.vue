@@ -72,7 +72,7 @@ export default {
         </select>
       </div>
 
-      <div class="col-12 col-lg-3">
+      <div class="col-12 col-lg-3 text-center">
         <label for="voto">Average vote</label>
 
         <select
@@ -132,6 +132,28 @@ export default {
 
 <!-- style section -->
 <style lang="scss" scoped>
+.our-doctors {
+  color: #20254c;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 5%;
+    height: 3px;
+    background-color: #20254c9e;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 5%;
+    height: 3px;
+    background-color: #20254c9e;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+}
 .container {
   min-height: calc(100vh - 56px);
 }

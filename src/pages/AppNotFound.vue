@@ -13,5 +13,6 @@ export default {
 <style lang="scss" scoped>
 .container {
   min-height: calc(100vh - 56px);
+  color: #20254c;
 }
 </style>
