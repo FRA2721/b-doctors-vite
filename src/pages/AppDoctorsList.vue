@@ -27,6 +27,7 @@ export default {
     },
     methods: {
         getDoctors() {
+
             this.$router.replace({ query: {vote: this.voto, spec: this.docSearch, fdback: this.feedback_num} })
             axios.get(`${this.baseUrl}/api/profiles`, {
                 params: {
@@ -92,12 +93,16 @@ export default {
 
         <div class="row justify-content-center g-5 pb-5 bg-light">
 
-            <div class="col-12 col-md-6 col-lg-4 col-card" v-for="(doctor) in this.doctors" :key="doctor.id">
+            <div v-if="loading">
+                <h2>loading</h2>
+            </div>
+
+            <div v-else class="col-12 col-md-6 col-lg-4 col-card" v-for="(doctor) in this.doctors" :key="doctor.id">
                 <AppCardVue :doctor="doctor" />
             </div>
         </div>
 
-        <div class="mt-5" v-if="doctors.length <= 0">
+        <div class="mt-5" v-if="!loading && doctors.length <= 0">
             <h2 class="text-center">No Doctors matched :( </h2>
         </div>
     </div>
