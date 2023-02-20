@@ -170,8 +170,11 @@ export default {
 }
 
 .card {
+
+  transition: transform 0.2s;
+
   &:hover {
-    transform: scale(1.04);
+    transform: scale(1.05);
     box-shadow: 10px 5px 5px lightgray;
   }
   .card-img-top {
