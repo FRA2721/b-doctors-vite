@@ -69,13 +69,15 @@ export default {
             class="collapse navbar-collapse justify-content-end"
             id="navbarNav">
             <div class="navbar-nav links text-secondary">
-              <router-link
+              <Router-link
                 v-for="(link, index) in links"
                 :to="{ name: link.routeName }"
-                class="nav-link justify-content-end"
+                class="nav-link"
                 :key="index"
-                >{{ link.label }}</router-link
-              >
+                >{{ link.label }}
+              </Router-link>
+              <a href="http://127.0.0.1:8000/login" class="nav-link">LOGIN</a>
+              <a href="http://127.0.0.1:8000/register" class="nav-link">REGISTER</a>
             </div>
           </div>
         </div>
