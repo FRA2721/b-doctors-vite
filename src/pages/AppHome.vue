@@ -13,11 +13,11 @@ export default {
     return {
       store,
       label: "Search",
-      docSearch: '',
+      docSearch: "",
       routeName: "doctorslist",
       baseUrl: "http://127.0.0.1:8000",
       doctors: [],
-      loading: false
+      loading: false,
     };
   },
 
@@ -28,22 +28,27 @@ export default {
   methods: {
     getDoctors() {
       this.loading = true;
-      axios.get(`${this.baseUrl}/api/profiles`, {
-        params: {
-          ...(this.docSearch && {
-            specialization_id: this.docSearch,
-          }),
-        },
-      }).then((resp) => {
-        this.doctors = resp.data.results.user;
-        this.store.specializations = resp.data.results.specializations;
-        console.log(this.doctors);
-        this.loading = false;
-        if (this.docSearch) {
-          this.$router.push({ name: "doctorslist", query: { spec: this.docSearch } });
-        }
-        this.loading = false
-      });
+      axios
+        .get(`${this.baseUrl}/api/profiles`, {
+          params: {
+            ...(this.docSearch && {
+              specialization_id: this.docSearch,
+            }),
+          },
+        })
+        .then((resp) => {
+          this.doctors = resp.data.results.user;
+          this.store.specializations = resp.data.results.specializations;
+          console.log(this.doctors);
+          this.loading = false;
+          if (this.docSearch) {
+            this.$router.push({
+              name: "doctorslist",
+              query: { spec: this.docSearch },
+            });
+          }
+          this.loading = false;
+        });
     },
   },
 };
@@ -57,9 +62,16 @@ export default {
     <div class="container pt-3">
       <div class="row">
         <div class="searchbar m-auto mt-3 col-12 col-md-8 col-lg-6">
-          <select class="form-select" @change="getDoctors" v-model="docSearch" placeholder="test">
+          <select
+            class="form-select"
+            @change="getDoctors"
+            v-model="docSearch"
+            placeholder="test">
             <option value="">Choose a specialization</option>
-            <option v-for="spec in store.specializations" :value="spec.slug" :key="spec.id">
+            <option
+              v-for="spec in store.specializations"
+              :value="spec.slug"
+              :key="spec.id">
               {{ spec.title }}
             </option>
           </select>
@@ -71,10 +83,12 @@ export default {
           <h2 class="text-center our-doctors">Our Doctors</h2>
           <div class="row pt-5 g-5">
             <div v-if="loading">Wait a minute</div>
-            <div v-else v-for="doctor in this.doctors" class="col-12 col-md-6 col-lg-4 mb-5" :key="doctor.id">
-
+            <div
+              v-else
+              v-for="doctor in this.doctors"
+              class="col-12 col-md-6 col-lg-4 mb-5"
+              :key="doctor.id">
               <AppCard :doctor="doctor" />
-
             </div>
           </div>
         </div>
@@ -84,20 +98,18 @@ export default {
 </template>
 <!-- /template section -->
 
-
 <style lang="scss" scoped>
 .col-card {
   height: 100% !important;
 }
 
 .our-doctors {
-
   color: #20254c;
 
   &::before {
     content: "";
     display: inline-block;
-    width: 10%;
+    width: 5%;
     height: 3px;
     background-color: #20254c9e;
     margin-right: 10px;
@@ -107,7 +119,7 @@ export default {
   &::after {
     content: "";
     display: inline-block;
-    width: 10%;
+    width: 5%;
     height: 3px;
     background-color: #20254c9e;
     margin-left: 10px;
@@ -119,4 +131,3 @@ export default {
   min-height: 200px;
 }
 </style>
-

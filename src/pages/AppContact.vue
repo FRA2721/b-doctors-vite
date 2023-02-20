@@ -67,7 +67,7 @@ h1 {
   &::before {
     content: "";
     display: inline-block;
-    width: 10%;
+    width: 5%;
     height: 3px;
     background-color: #20254c9e;
     margin-right: 10px;
@@ -77,7 +77,7 @@ h1 {
   &::after {
     content: "";
     display: inline-block;
-    width: 10%;
+    width: 5%;
     height: 3px;
     background-color: #20254c9e;
     margin-left: 10px;
