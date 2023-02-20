@@ -78,7 +78,7 @@ export default {
         </div>
       </div>
 
-      <div class="container mt-5 bg-light pt-5">
+      <div class="container my-5 bg-light py-5 px-5">
         <div class="evidenza">
           <h2 class="text-center our-doctors">Our Doctors</h2>
           <div class="row pt-5 g-5">
@@ -99,10 +99,6 @@ export default {
 <!-- /template section -->
 
 <style lang="scss" scoped>
-.col-card {
-  height: 100% !important;
-}
-
 .our-doctors {
   color: #20254c;
 
