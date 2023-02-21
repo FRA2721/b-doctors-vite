@@ -66,7 +66,7 @@ export default {
 
 
       <div class="container mt-5 bg-light pt-5">
-        <div class="evidenza">
+        <div class="evidenza d-flex justify-content-center flex-column">
           <h2 class="text-center our-doctors mb-3">Our TOP Doctors</h2>
 
           <div id="carouselExampleCaptions" class="carousel slide">
@@ -74,11 +74,11 @@ export default {
             <div class="carousel-inner mb-5">
               <div class="carousel-item active" v-for="sponsoredUser in sponsoredUsers">
                 <img v-if="sponsoredUser.user_detail.photo" :src="`${baseUrl}/storage/${sponsoredUser.user_detail.photo}`"
-                  class="d-block w-100" alt="...">
+                  alt="...">
                 <img v-else src="../assets/imgs/4025200.png" alt="">
-                <div class="carousel-caption d-block">
+                <div class="carousel-caption">
                   <h5>{{ sponsoredUser.name }}</h5>
-                  <p v-for="spec in sponsoredUser.specializations">{{ spec.title }}</p>
+                  <p class="d-inline me-3" v-for="spec in sponsoredUser.specializations">{{ spec.title }}</p>
                 </div>
               </div>
             </div>
@@ -122,7 +122,6 @@ export default {
       </div>
 
 
-      <!-- CAROUSEL -->
 
 
 
@@ -158,13 +157,22 @@ export default {
   }
 }
 
+.carousel {
+  width: 80%;
+  margin: auto;
+}
+
 .evidenza {
   min-height: 200px;
 }
 
+
+
 .carousel-item {
+
   img {
     height: 40rem;
+    width: 100%;
     object-fit: cover;
     object-position: top;
   }
@@ -173,6 +181,18 @@ export default {
 .carousel-caption {
   color: black;
   background-color: #d5eaf2c9;
+  border-radius: 10px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  border-radius: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #20254c;
+  line-height: 2rem;
   border-radius: 10px;
 }
 </style>
