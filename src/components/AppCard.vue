@@ -4,6 +4,7 @@ export default {
     name: "AppCard",
     props: {
         doctor: Object,
+        sponsoredUsers: Object,
     },
     data() {
         return {
@@ -25,16 +26,21 @@ export default {
 
 <template>
     <div class="card">
+
+        <div v-for="doctors in sponsoredUsers">
+            <i v-if="doctor.name === doctors.name" class="fa-solid fa-user-plus"></i>
+        </div>
+
         <div v-if="doctor.user_detail.photo" class="card_img">
             <img :src="`${baseUrl}/storage/${doctor.user_detail.photo}`" alt="">
         </div>
         <div v-else class="card_img">
             <img src="../assets/imgs/4025200.png" alt="">
         </div>
-        <div class="card-body text-center">
+        <div class="card-body text-start">
             <div class="name-email d-flex justify-content-between flex-column flex-sm-row flex-md-column">
-                <h5 class="">{{ doctor.name }} {{ doctor.surname }}
-                </h5>
+                <h4 class=" mb-4 mt-2">{{ doctor.name }} {{ doctor.surname }}
+                </h4>
                 <span class="doctor-email mb-2"> <i class="fa-solid fa-envelope"></i> {{
                     doctor.email
                 }}</span>
@@ -48,10 +54,13 @@ export default {
 
             <p>{{ doctor.user_detail.performance }}</p>
 
-            <p>
+            <p class="">
                 <i v-for="n in 5" :class="n <= getStar ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
             </p>
-            <router-link :to="{ path: `doctorslist/${doctor.slug}` }" class="btn btn-primary">Details</router-link>
+            <p class="text-end">
+                <router-link :to="{ path: `doctorslist/${doctor.slug}` }" class="btn btn-primary">Details</router-link>
+            </p>
+
         </div>
     </div>
 </template>
@@ -113,5 +122,16 @@ export default {
         margin-left: 10px;
         vertical-align: middle;
     }
+}
+
+.fa-user-plus {
+    color: white;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 4%;
+    right: 3%;
+    border-radius: 2rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.657);
 }
 </style>

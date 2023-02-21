@@ -18,6 +18,7 @@ export default {
       counter: 0,
       total: 0,
       specializations: [],
+      sponsoredUsers: Object
     };
   },
   components: { AppDoctorDetails, AppCardVue },
@@ -46,6 +47,7 @@ export default {
           this.store.specializations = resp.data.results.specializations;
           console.log(this.doctors);
           this.loading = false;
+          this.sponsoredUsers = resp.data.results.sponsoredUsers;
         });
     },
   },
@@ -100,7 +102,7 @@ export default {
       </div>
 
       <div v-else class="col-12 col-md-6 col-lg-4 col-card" v-for="doctor in this.doctors" :key="doctor.id">
-        <AppCardVue :doctor="doctor" />
+        <AppCardVue :doctor="doctor" :sponsoredUsers="this.sponsoredUsers" />
       </div>
       <div class="mt-5" v-if="!loading && doctors.length <= 0">
         <h2 class="text-center">No Doctors matched :(</h2>

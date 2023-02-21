@@ -46,18 +46,20 @@ export default {
     <div class="container">
         <h1 class="mb-5 mt-3 our-services text-center">Our services</h1>
 
-        <div class="row g-4 pb-4">
-            <div class="container-spec col-12 col-md-4" v-for="spec in store.specializations" :key="spec.id">
-                <h6 class="title-spec text-center">
-                    {{ spec.title }}
-                </h6>
-                <div class="text-spec">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Perspiciatis necessitatibus vel perferendis voluptatum neque quos,
-                        ipsa explicabo odio accusantium ducimus repudiandae eius nemo facere
-                        ad officiis. Illo pariatur maxime ipsum.
-                    </p>
+        <div class="row g-2">
+            <div class="col-12 col-md-4" v-for="spec in store.specializations" :key="spec.id">
+                <div class="container-spec p-3">
+                    <h6 class="title-spec text-center pt-2">
+                        {{ spec.title }}
+                    </h6>
+                    <div class="text-spec">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Perspiciatis necessitatibus vel perferendis voluptatum neque quos,
+                            ipsa explicabo odio accusantium ducimus repudiandae eius nemo facere
+                            ad officiis. Illo pariatur maxime ipsum.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -97,7 +99,7 @@ export default {
 }
 
 .container-spec {
-    background-color: #d5e9f2;
+    background-color: #ecf2f4;
     border: 4px solid white;
     border-radius: 10px;
 }

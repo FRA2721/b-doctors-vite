@@ -18,7 +18,7 @@ export default {
       baseUrl: "http://127.0.0.1:8000",
       doctors: [],
       loading: false,
-      sponsoredUsers: []
+      sponsoredUsers: Object
     };
   },
 
@@ -67,12 +67,13 @@ export default {
 
       <div class="container mt-5 bg-light pt-5">
         <div class="evidenza d-flex justify-content-center flex-column">
-          <h2 class="text-center our-doctors mb-3">Our TOP Doctors</h2>
+          <h2 class="text-center our-doctors mb-3">Our Top Doctors</h2>
 
           <div id="carouselExampleCaptions" class="carousel slide">
 
             <div class="carousel-inner mb-5">
               <div class="carousel-item active" v-for="sponsoredUser in sponsoredUsers">
+
                 <img v-if="sponsoredUser.user_detail.photo" :src="`${baseUrl}/storage/${sponsoredUser.user_detail.photo}`"
                   alt="...">
                 <img v-else src="../assets/imgs/4025200.png" alt="">
@@ -115,7 +116,7 @@ export default {
           <div class="row pt-5 g-5">
             <div v-if="loading">Wait a minute</div>
             <div v-else v-for="doctor in this.doctors" class="col-12 col-md-6 col-lg-4 mb-5" :key="doctor.id">
-              <AppCard :doctor="doctor" />
+              <AppCard :doctor="doctor" :sponsored-users="this.sponsoredUsers" />
             </div>
           </div>
         </div>
