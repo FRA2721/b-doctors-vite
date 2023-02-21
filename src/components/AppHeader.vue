@@ -1,13 +1,12 @@
-<!-- script section -->
 <script>
 import { RouterLink } from "vue-router";
 import { store } from "../store";
 import AppJumbotron from "./AppJumbotron.vue";
 
 export default {
-  // name
+
   name: "AppHeader",
-  // data
+
   data() {
     return {
       links: [
@@ -41,9 +40,7 @@ export default {
 };
 </script>
 
-<!-- template section -->
 <template>
-  <!-- header section -->
   <header>
     <div class="container">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -68,30 +65,28 @@ export default {
           </button>
           <!-- /hamburger menu -->
 
-          <!-- navbar link -->
           <div
             class="collapse navbar-collapse justify-content-end"
             id="navbarNav">
             <div class="navbar-nav links text-secondary">
-              <router-link
-                :to="{ name: item.routeName }"
-                class="nav-link justify-content-end"
-                v-for="(item, index) in links"
+              <Router-link
+                v-for="(link, index) in links"
+                :to="{ name: link.routeName }"
+                class="nav-link"
                 :key="index"
-                >{{ item.label }}</router-link
-              >
+                >{{ link.label }}
+              </Router-link>
+              <a href="http://127.0.0.1:8000/login" class="nav-link">LOGIN</a>
+              <a href="http://127.0.0.1:8000/register" class="nav-link">REGISTER</a>
             </div>
           </div>
-          <!-- /navbar links -->
-          <!-- log in & register -->
         </div>
       </nav>
     </div>
   </header>
-  <!-- /header section -->
 </template>
 
-<!-- style section -->
+
 <style lang="scss" scoped>
 @use "../styles/general.scss" as *;
 
@@ -104,12 +99,10 @@ header {
   width: 4rem;
 }
 
-// img general formatting section
 img {
   width: 50px;
 }
 
-// links general formatting section
 .links {
   a {
     color: #606b87;
@@ -125,14 +118,6 @@ img {
     &:hover:after {
       transform: scaleX(1);
     }
-
-    // &.fromRight:after {
-    //   transform-origin: 100% 50%;
-    // }
-
-    // &.fromLeft:after {
-    //   transform-origin: 0% 50%;
-    // }
 
     &:hover {
       transition-duration: 0.5s;
