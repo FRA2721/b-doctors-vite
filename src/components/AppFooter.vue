@@ -18,8 +18,7 @@ export default {
 <template>
   <footer>
     <div class="container pt-5 pb-5">
-      <div
-        class="d-flex flex-column flex-md-row g-4 row justify-content-around">
+      <div class="d-flex flex-column flex-md-row g-4 row justify-content-around">
         <div class="left-container col-12 col-lg-4">
           <a href="/">
             <img class="logo" src="../assets/imgs/logo-4.png" alt="logo" />
@@ -96,8 +95,7 @@ export default {
           </div>
         </div>
       </div>
-      <div
-        class="socials d-flex pt-5 justify-content-center justify-content-md-end">
+      <div class="socials d-flex pt-5 justify-content-center justify-content-md-end">
         <div><i class="fa-brands fa-instagram"></i></div>
         <div><i class="fa-brands fa-square-twitter"></i></div>
         <div><i class="fa-brands fa-facebook"></i></div>
@@ -123,7 +121,6 @@ footer {
   background-color: #1f254c;
   color: white;
   border-top: 3px solid grey;
-  margin-top: 1rem;
 }
 
 .addres {
@@ -147,6 +144,7 @@ a {
   color: white;
   transition: 0.15s;
 }
+
 .fa-brands {
   margin-left: 1rem;
   cursor: pointer;

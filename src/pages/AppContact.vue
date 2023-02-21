@@ -8,49 +8,57 @@ export default {
 
 <!-- template section -->
 <template>
-  <div class="container">
-    <h1 class="text-center mt-3 mb-5">BD Doctors Contacts</h1>
+  <div class="container-1">
+    <div class="background-page">
 
-    <div class="details row text-center text-sm-start align-items-stretch pt-5 mb-5">
-      <div class="title col col-12 col-md-3">
-        <h2>Contacts</h2>
-      </div>
-      <div class="address col col-12 col-md-3">
-        <h4>Office info:</h4>
-        <p>02 123123123</p>
-        <p>PEC: bdoctors@doctor.com</p>
-      </div>
-      <div class="program col col-12 col-md-3">
-        <h4>Public relations office:</h4>
-        <p>Uping Street seen from Withsbrurck, 203</p>
-      </div>
-      <div class="contact-center col col-12 col-md-3">
-        <h4>Contact center:</h4>
-        <p>02 698279829</p>
-      </div>
-    </div>
+      <div class="container">
+        <h1 class="text-center mb-5 pt-3">BD Doctors Contacts</h1>
 
-    <div class="details row text-center text-sm-start align-items-stretch pt-5 mb-5">
-      <div class="title col col-12 col-md-3">
-        <h2>Structure details</h2>
-      </div>
-      <div class="address col col-12 col-md-3">
-        <h4>Address:</h4>
-        <p>Downing Street seen from Whitehall, 2013</p>
-      </div>
-      <div class="program col col-12 col-md-3">
-        <h4>Opening times:</h4>
-        <p>
-          Lun-Ven 7:00-17:00 <br />
-          Sabato 8:00-12:00 <br />
-        </p>
-      </div>
-      <div class="contact-center col col-12 col-md-3">
-        <h4>Information Admissions Solvency:</h4>
-        <p>
-          Telefono 02 2643 2800 <br />
-          Lun-Ven 7:00-17:00
-        </p>
+        <div class="details row text-center text-sm-start align-items-stretch pt-5 mb-5">
+          <div class="title col col-12 col-md-3">
+            <h2>Contacts</h2>
+          </div>
+          <div class="address col col-12 col-md-3">
+            <h4 class="text-center"> <i class="fa-solid fa-building"></i> Office info:</h4>
+            <p class="text-center">02 123123123</p>
+            <p class="text-center">PEC: bdoctors@doctor.com</p>
+          </div>
+          <div class="program col col-12 col-md-3">
+            <h4 class="text-center"> <i class="fa-solid fa-users"></i> Public relations office:</h4>
+            <p class="text-center">Uping Street seen from Withsbrurck, 203</p>
+          </div>
+          <div class="contact-center col col-12 col-md-3">
+            <h4 class="text-center"> <i class="fa-solid fa-phone"></i> Contact center:</h4>
+            <p class="text-center">02 698279829</p>
+          </div>
+        </div>
+        <hr>
+        <div class="details row text-center text-sm-start align-items-stretch pt-5 mb-5">
+          <div class="title col col-12 col-md-3">
+            <h2>Structure details</h2>
+          </div>
+          <div class="address col col-12 col-md-3">
+            <h4 class="text-center"> <i class="fa-solid fa-location-dot"></i> Address:</h4>
+            <p class="text-center">Downing Street seen from Whitehall, 2013</p>
+          </div>
+          <div class="program col col-12 col-md-3">
+            <h4 class="text-center"> <i class="fa-solid fa-calendar-days"></i> Opening times:</h4>
+            <p class="text-center">
+              Lun-Ven 7:00-17:00 <br />
+              Sabato 8:00-12:00 <br />
+            </p>
+          </div>
+          <div class="contact-center col col-12 col-md-3">
+            <h4 class="text-center"> <i class="fa-solid fa-circle-info"></i> Information Admissions Solvency:</h4>
+            <p class="text-center">
+              Telefono 02 2643 2800 <br />
+              Lun-Ven 7:00-17:00
+            </p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center img-container">
+          <img src="../assets/imgs/logo-4.png" alt="">
+        </div>
       </div>
     </div>
   </div>
@@ -62,6 +70,7 @@ export default {
 
 .container {
   min-height: calc(100vh - 56px);
+
 }
 
 h1 {
@@ -88,7 +97,32 @@ h1 {
   }
 }
 
-.col {
-  border-left: 1px solid black;
+// .col {
+//   border-left: 1px solid black;
+// }
+
+.container-1 {
+  background-image: url('../assets/imgs/structure-hospital.jpeg');
+  background-size: cover;
+  background-position: center;
+
+}
+
+.background-page {
+  background-color: #d5eaf2a0;
+}
+
+.tables {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.img-container {
+  padding-top: 3rem;
+
+  img {
+    width: 40%;
+  }
 }
 </style>

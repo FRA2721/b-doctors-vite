@@ -221,7 +221,7 @@ export default {
     height: 100%;
     object-fit: cover;
     object-position: top;
-    border-radius: 10%;
+    border-radius: 15px;
   }
 }
 
@@ -240,7 +240,7 @@ export default {
   background-color: #d5eaf2;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  border-radius: 10px;
+  border-radius: 15px;
   margin-bottom: 1rem;
 
 }
