@@ -23,7 +23,7 @@ export default {
               </div>
               <div
                 class="col-12 col-md-6 col-lg-9 col-xl-12 d-flex mt-4 justify-content-center justify-content-lg-start align-items-center">
-                <RouterLink :to="{name: 'doctorslist'}" class="d-flex">
+                <RouterLink :to="{ name: 'doctorslist' }" class="d-flex">
                   <div href="#" class="play-btn text-primary me-2"><i class="fa-regular fa-circle-play me-1"></i>
                   </div>
                   <div class="d-inline-block text-secondary">
@@ -50,6 +50,7 @@ export default {
 
 .jumbotron {
   background-image: linear-gradient(to bottom right, #d4e4fb, #d5f0e9);
+  border-bottom: 3px solid #f8f9fa;
 
   h3 {
     font-size: 1.4rem;
