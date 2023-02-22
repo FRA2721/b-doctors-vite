@@ -56,7 +56,7 @@ export default {
             </p>
           </div>
         </div>
-        <div class="d-flex justify-content-center img-container">
+        <div class="d-flex justify-content-center img-container pb-5">
           <img src="../assets/imgs/logo-4.png" alt="">
         </div>
       </div>

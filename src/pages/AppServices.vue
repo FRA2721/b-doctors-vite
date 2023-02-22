@@ -43,8 +43,8 @@ export default {
 
 <!-- template section -->
 <template>
-    <div class="container">
-        <h1 class="mb-5 mt-3 our-services text-center">Our services</h1>
+    <div class="container mb-5">
+        <h1 class="my-5 our-services text-center">Our services</h1>
 
         <div class="row g-2">
             <div class="col-12 col-md-4" v-for="spec in store.specializations" :key="spec.id">
