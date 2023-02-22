@@ -49,9 +49,8 @@ export default {
             </div>
             <p class=""> <i class="fa-solid fa-phone"></i> {{ doctor.user_detail.phone }}</p>
             <p>
-                <span class="me-1 d-block d-md-inline-block" v-for="spec in doctor.specializations"> <i
-                        class="fa-solid fa-hashtag"></i> {{
-                            spec.title }}</span>
+                <span class="me-1 d-block d-md-inline-block" v-for="spec in doctor.specializations">
+                    <i class="fa-solid fa-hashtag"></i>{{ spec.title }}</span>
             </p>
 
             <p>{{ doctor.user_detail.performance }}</p>

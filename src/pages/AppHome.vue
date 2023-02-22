@@ -90,9 +90,9 @@ export default {
               <div class="doctor-email mb-2"> <i class="fa-solid fa-envelope"></i> {{ sponsoredUser.email }}</div>
               <p class=""> <i class="fa-solid fa-phone"></i> {{ sponsoredUser.user_detail.phone }}</p>
               <p>
-                <span class="me-1 d-block d-md-inline-block" v-for="spec in sponsoredUser.specializations"> <i
-                    class="fa-solid fa-hashtag"></i> {{
-                      spec.title }}</span>
+                <span class="me-1 d-block d-md-inline-block" v-for="spec in sponsoredUser.specializations"> 
+                  <i class="fa-solid fa-hashtag"></i>{{spec.title }}
+                </span>
               </p>
               <div class="d-flex justify-content-between">
 
