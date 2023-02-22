@@ -126,7 +126,7 @@ export default {
     </div>
 
     <div class="spec-container row justify-content-center mb-3">
-      <div class="spec col-11 col-md-9 d-flex justify-content-center pt-2 pb-2">
+      <div class="spec col-11 col-md-9 d-flex flex-lg-row flex-column justify-content-center pt-2 pb-2">
         <span class="me-3" v-for="spec in doctor.specializations" :key="spec.id">
           <i class="fa-solid fa-hashtag"></i>{{ spec.title }}</span>
       </div>
