@@ -23,7 +23,7 @@ export default {
           <a href="/">
             <img class="logo" src="../assets/imgs/logo-4.png" alt="logo" />
           </a>
-          <span>BD Doctors</span>
+          <span>B Doctors</span>
           <h6>
             2300 - 1633 <span class="addres">New York Street</span> <br />
             New York - United States of America <br />
@@ -59,7 +59,7 @@ export default {
               </li>
 
               <li>
-                <a href=""> &SmallCircle; Contacts BD Doctors </a>
+                <a href=""> &SmallCircle; Contacts B Doctors </a>
               </li>
 
               <li>
@@ -103,7 +103,7 @@ export default {
       </div>
       <hr />
       <div class="d-flex justify-content-center">
-        <p>&#169; <span class="date">2023</span> Copyright: BD Doctors.com</p>
+        <p>&#169; <span class="date">2023</span> Copyright: B Doctors.com</p>
       </div>
     </div>
   </footer>

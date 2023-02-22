@@ -12,7 +12,7 @@ export default {
     <div class="background-page">
 
       <div class="container">
-        <h1 class="text-center mb-5 pt-3">BD Doctors Contacts</h1>
+        <h1 class="text-center mb-5 pt-3">B Doctors Contact us</h1>
 
         <div class="details row text-center text-sm-start align-items-stretch pt-5 mb-5">
           <div class="title col col-12 col-md-3">
