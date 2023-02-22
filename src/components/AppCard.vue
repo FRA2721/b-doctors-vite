@@ -28,7 +28,9 @@ export default {
     <div class="card">
 
         <div v-for="doctors in sponsoredUsers">
-            <i v-if="doctor.name === doctors.name" class="fa-solid fa-user-plus"></i>
+            <div v-if="doctor.name === doctors.name" class="sponsored">
+                Sponsored!
+            </div>
         </div>
 
         <div v-if="doctor.user_detail.photo" class="card_img">
@@ -39,7 +41,7 @@ export default {
         </div>
         <div class="card-body text-start">
             <div class="name-email d-flex justify-content-between flex-column flex-sm-row flex-md-column">
-                <h4 class=" mb-4 mt-2">{{ doctor.name }} {{ doctor.surname }}
+                <h4 class=" mb-4 mt-2">Dr. {{ doctor.name }} {{ doctor.surname }}
                 </h4>
                 <span class="doctor-email mb-2"> <i class="fa-solid fa-envelope"></i> {{
                     doctor.email
@@ -53,13 +55,16 @@ export default {
             </p>
 
             <p>{{ doctor.user_detail.performance }}</p>
+            <div class="d-flex justify-content-between">
 
-            <p class="">
-                <i v-for="n in 5" :class="n <= getStar ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
-            </p>
-            <p class="text-end">
-                <router-link :to="{ path: `doctorslist/${doctor.slug}` }" class="btn btn-primary">Details</router-link>
-            </p>
+                <p class="">
+                    <i v-for="n in 5" :class="n <= getStar ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
+                </p>
+                <p class="text-end">
+                    <router-link :to="{ path: `doctorslist/${doctor.slug}` }" class="btn btn-primary">Details</router-link>
+                </p>
+            </div>
+
 
         </div>
     </div>
@@ -73,11 +78,14 @@ export default {
 
 .card {
     height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
     transition: 0.2s;
 
     .card_img {
         width: 100%;
-        height: 20rem;
+        height: 17rem;
+        overflow: hidden;
 
         img {
             width: 100%;
@@ -124,14 +132,13 @@ export default {
     }
 }
 
-.fa-user-plus {
+.sponsored {
     color: white;
-    font-size: 1.5rem;
     position: absolute;
     top: 4%;
-    right: 3%;
-    border-radius: 2rem;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.657);
+    right: 0;
+    border-radius: 1rem 0 0 1rem;
+    padding: 0.4rem .6rem;
+    background-color: rgba(247, 190, 4, 0.644);
 }
 </style>

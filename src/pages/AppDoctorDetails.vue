@@ -14,6 +14,7 @@ export default {
       vote: null,
       review: "",
       reviewer: "",
+      loading: true,
       msgSuccess: false,
       msgLoading: false,
       fbSuccess: false,
@@ -26,6 +27,7 @@ export default {
   },
   methods: {
     getDoctors() {
+      this.loading = true;
       axios
         .get(`${this.baseUrl}/api/profiles/${this.$route.params.slug}`)
         .then((resp) => {
@@ -89,7 +91,7 @@ export default {
 
 <!-- template section -->
 <template>
-  <div class="container">
+  <div v-if="loading === false" class="container">
 
 
     <div class="profile d-flex justify-content-center pt-5 pb-3">
@@ -116,6 +118,8 @@ export default {
             <p>
               <i class="fa-solid fa-house"></i> {{ doctor.user_detail.address }}
             </p>
+
+            <a :href="`http://127.0.0.1:8000/storage/${doctor.user_detail.curriculum}`">See Curriculum</a>
           </div>
         </div>
       </div>
@@ -130,13 +134,15 @@ export default {
 
     <div class="description-container row justify-content-center">
       <div class="col-11 col-md-9 doctor-description">
-        {{ doctor.user_detail.description }}
+        <div class="col-9 mx-auto">
+          {{ doctor.user_detail.description }}
+        </div>
       </div>
     </div>
 
-    <div class="row g-3 justify-content-center mt-3">
-      <div class="col-12 col-lg-9">
-        <div class="border rounded p-4">
+    <div class="row g-3 justify-content-center mt-3 mb-5 ">
+      <div class="col-12 col-lg-7">
+        <div class="border mb-5 p-4 bg-doc">
           <h2>Message</h2>
           <div class="alert alert-success text-center" v-if="msgSuccess">
             Your message was sussessfully sended!
@@ -168,7 +174,7 @@ export default {
         </div>
       </div>
 
-      <div class="col-12 col-lg-9 mt-5 mb-4">
+      <div class="col-12 col-lg-7 bg-doc">
         <div class="border rounded p-4">
           <h2>Feedback</h2>
           <div class="alert alert-success text-center" v-if="fbSuccess">
@@ -196,7 +202,7 @@ export default {
 
             <div>
               <label for="review">Review:</label>
-              <textarea required class="form-control mb-3" v-model="review" name="review" id="review" cols="30"
+              <textarea required class="form-control mt-3 mb-3" v-model="review" name="review" id="review" cols="30"
                 placeholder="Enter your review"></textarea>
             </div>
 
@@ -212,6 +218,11 @@ export default {
 
 <!-- style section -->
 <style lang="scss" scoped>
+
+.bg-doc {
+  background-color: #d5eaf2;
+  border-radius: 15px;
+}
 .img-container {
   width: 15rem;
   height: 15rem;

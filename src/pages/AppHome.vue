@@ -18,8 +18,13 @@ export default {
       baseUrl: "http://127.0.0.1:8000",
       doctors: [],
       loading: false,
-      sponsoredUsers: Object
+      sponsoredUsers: [],
     };
+  },
+  computed: {
+    getStar() {
+      return
+    }
   },
 
   created() {
@@ -64,55 +69,61 @@ export default {
   <main>
     <div class="container pt-3">
 
+      <div class="container my-5 bg-light py-5 px-5">
+        <h2 class="text-center our-doctors mb-5">Sponsored Doctors</h2>
+        <div class="row row-cols-4 justify-content-center justify-content-md-between gy-5">
+          <div class="card" v-for="sponsoredUser in sponsoredUsers" style="width: 18rem;">
+            <div class="ms_card-img">
 
-      <div class="container mt-5 bg-light pt-5">
-        <div class="evidenza d-flex justify-content-center flex-column">
-          <h2 class="text-center our-doctors mb-3">Our Top Doctors</h2>
-
-          <div id="carouselExampleCaptions" class="carousel slide">
-
-            <div class="carousel-inner mb-5">
-              <div class="carousel-item active" v-for="sponsoredUser in sponsoredUsers">
-
-                <img v-if="sponsoredUser.user_detail.photo" :src="`${baseUrl}/storage/${sponsoredUser.user_detail.photo}`"
-                  alt="...">
-                <img v-else src="../assets/imgs/4025200.png" alt="">
-                <div class="carousel-caption">
-                  <h5>{{ sponsoredUser.name }}</h5>
-                  <p class="d-inline me-3" v-for="spec in sponsoredUser.specializations">{{ spec.title }}</p>
+              <div v-for="doctor in doctors ">
+                <div v-if="sponsoredUser.name === doctor.name" class="sponsored">
+                  Sponsored!
                 </div>
               </div>
+
+              <img v-if="sponsoredUser.user_detail.photo" class="card-img-top"
+                :src="`${baseUrl}/storage/${sponsoredUser.user_detail.photo}`" alt="...">
+              <img v-else class="card-img-top" src="../assets/imgs/4025200.png" alt="">
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-              data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-              data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+            <div class="card-body">
+              <h4 class=" mb-4 mt-2">Dr. {{ sponsoredUser.name }} {{ sponsoredUser.surname }}</h4>
+              <div class="doctor-email mb-2"> <i class="fa-solid fa-envelope"></i> {{ sponsoredUser.email }}</div>
+              <p class=""> <i class="fa-solid fa-phone"></i> {{ sponsoredUser.user_detail.phone }}</p>
+              <p>
+                <span class="me-1 d-block d-md-inline-block" v-for="spec in sponsoredUser.specializations"> <i
+                    class="fa-solid fa-hashtag"></i> {{
+                      spec.title }}</span>
+              </p>
+              <div class="d-flex justify-content-between">
+
+                <p>
+                  <i v-for="n in 5" :class="n <= Math.floor(sponsoredUser.feedback_avg_vote) ? 'fa-solid' : 'fa-regular'"
+                    class="fa-star"></i>
+                </p>
+                <p class="text-end">
+                  <router-link :to="{ path: `doctorslist/${sponsoredUser.slug}` }"
+                    class="btn btn-primary">Details</router-link>
+                </p>
+              </div>
+            </div>
+
           </div>
-
         </div>
+
       </div>
 
-
-      <div class="row">
-        <div class="searchbar m-auto mt-3 col-12 col-md-8 col-lg-6">
-          <select class="form-select" @change="getDoctors" v-model="docSearch" placeholder="test">
-            <option value="">Choose a specialization</option>
-            <option v-for="spec in store.specializations" :value="spec.slug" :key="spec.id">
-              {{ spec.title }}
-            </option>
-          </select>
-        </div>
-      </div>
 
       <div class="container my-5 bg-light py-5 px-5">
         <div class="evidenza">
           <h2 class="text-center our-doctors">Our Doctors</h2>
+          <div class="mb-3 mt-5 col-8 mx-auto">
+            <select class="form-select" @change="getDoctors" v-model="docSearch" placeholder="test">
+              <option value="">Choose a specialization</option>
+              <option v-for="spec in store.specializations" :value="spec.slug" :key="spec.id">
+                {{ spec.title }}
+              </option>
+            </select>
+          </div>
           <div class="row pt-5 g-5">
             <div v-if="loading">Wait a minute</div>
             <div v-else v-for="doctor in this.doctors" class="col-12 col-md-6 col-lg-4 mb-5" :key="doctor.id">
@@ -121,11 +132,6 @@ export default {
           </div>
         </div>
       </div>
-
-
-
-
-
     </div>
 
 
@@ -168,32 +174,24 @@ export default {
 }
 
 
-
-.carousel-item {
-
-  img {
-    height: 40rem;
-    width: 100%;
-    object-fit: cover;
-    object-position: top;
-  }
+.card {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 20px;
 }
 
-.carousel-caption {
-  color: black;
-  background-color: #d5eaf2c9;
-  border-radius: 10px;
+.ms_card-img {
+  max-height: 190px;
+  overflow: hidden;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-  border-radius: 10px;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: #20254c;
-  line-height: 2rem;
-  border-radius: 10px;
+.sponsored {
+  color: white;
+  position: absolute;
+  top: 4%;
+  right: 0;
+  border-radius: 1rem 0 0 1rem;
+  padding: 0.4rem .6rem;
+  background-color: rgba(247, 190, 4, 0.644);
 }
 </style>

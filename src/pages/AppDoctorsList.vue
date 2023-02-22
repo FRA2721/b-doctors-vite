@@ -3,7 +3,7 @@
 import { store } from "../store";
 import axios from "axios";
 import AppDoctorDetails from "./AppDoctorDetails.vue";
-import AppCardVue from "../components/AppCard.vue";
+import AppCard from "../components/AppCard.vue";
 export default {
   name: "AppDoctorList",
   data() {
@@ -21,7 +21,7 @@ export default {
       sponsoredUsers: Object
     };
   },
-  components: { AppDoctorDetails, AppCardVue },
+  components: { AppDoctorDetails, AppCard },
   created() {
     this.getDoctors();
   },
@@ -102,7 +102,7 @@ export default {
       </div>
 
       <div v-else class="col-12 col-md-6 col-lg-4 col-card" v-for="doctor in this.doctors" :key="doctor.id">
-        <AppCardVue :doctor="doctor" :sponsoredUsers="this.sponsoredUsers" />
+        <AppCard :doctor="doctor" :sponsoredUsers="this.sponsoredUsers" />
       </div>
       <div class="mt-5" v-if="!loading && doctors.length <= 0">
         <h2 class="text-center">No Doctors matched :(</h2>
