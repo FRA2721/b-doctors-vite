@@ -119,7 +119,7 @@ export default {
               <i class="fa-solid fa-house"></i> {{ doctor.user_detail.address }}
             </p>
 
-            <a :href="`http://127.0.0.1:8000/storage/${doctor.user_detail.curriculum}`">See Curriculum</a>
+            <a v-if="doctor.user_detail.curriculum" :href="`http://127.0.0.1:8000/storage/${doctor.user_detail.curriculum}`">See Curriculum</a>
           </div>
         </div>
       </div>
