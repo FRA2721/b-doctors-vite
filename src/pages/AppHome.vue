@@ -183,6 +183,11 @@ export default {
 .ms_card-img {
   max-height: 190px;
   overflow: hidden;
+
+  img {
+    height: 190px;
+    object-fit: cover;
+  }
 }
 
 .sponsored {

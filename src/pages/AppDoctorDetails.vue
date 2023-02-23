@@ -49,13 +49,13 @@ export default {
 
       axios.post(`${this.baseUrl}/api/messages`, data).then((resp) => {
         this.msgSuccess = resp.data.success;
+        console.log(resp.data);
 
         if (this.msgSuccess) {
           this.name = "";
           this.email = "";
           this.text = "";
         } else {
-          console.log(resp.data);
           this.errors = resp.data.errors;
         }
       });
@@ -119,7 +119,13 @@ export default {
               <i class="fa-solid fa-house"></i> {{ doctor.user_detail.address }}
             </p>
 
-            <a v-if="doctor.user_detail.curriculum" :href="`http://127.0.0.1:8000/storage/${doctor.user_detail.curriculum}`">See Curriculum</a>
+            <p>
+                  <i v-for="n in 5" :class="n <= Math.floor(doctor.feedback_avg_vote) ? 'fa-solid' : 'fa-regular'"
+                    class="fa-star"></i>
+                </p>
+
+            <a v-if="doctor.user_detail.curriculum"
+              :href="`http://127.0.0.1:8000/storage/${doctor.user_detail.curriculum}`">See Curriculum</a>
           </div>
         </div>
       </div>
@@ -218,11 +224,11 @@ export default {
 
 <!-- style section -->
 <style lang="scss" scoped>
-
 .bg-doc {
   background-color: #d5eaf2;
   border-radius: 15px;
 }
+
 .img-container {
   width: 15rem;
   height: 15rem;
